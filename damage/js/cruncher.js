@@ -346,6 +346,7 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
             result.push({ unit: x, orb: orb, base: Math.floor(atk), multipliers: multipliers, position: n });
         });
         // apply static multipliers and static bonuses
+        console.log(enabledEffects);
         for (var i=0;i<enabledEffects.length;++i) {
             if (enabledEffects[i].hasOwnProperty('atkStatic'))
                 result = applyCaptainEffectsToDamage(result,enabledEffects[i].atkStatic,null,true,enabledEffects[i].sourceSlot);

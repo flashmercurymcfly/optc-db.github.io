@@ -9,6 +9,13 @@
             </div>
         </li>
 
+        <li ui-sref=".effects">
+            <div id="profileContainer2" ng-class="{ profiled: data.effect }">
+                <i class="fa fa-book"></i>
+                <a>{{data.effect || 'No active map effect'}}</a>
+            </div>
+        </li>
+
         <li>
             <div id="ship" status="{{data.ship[1]}}" ship-manager>
                 <i class="fa fa-level-up comodity" ui-sref="main.ship"></i>

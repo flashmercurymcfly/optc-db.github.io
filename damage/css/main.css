@@ -573,7 +573,7 @@ li.disabled {
     height: 20px;
 }
 
-.special > div, #profileContainer {
+.special > div, #profileContainer, #profileContainer2 {
     width: 270px;
     white-space: nowrap;
     overflow: hidden;

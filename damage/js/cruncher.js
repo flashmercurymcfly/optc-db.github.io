@@ -124,8 +124,11 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
         });
         result.team = getTeamDetails();
         var hpMax = 0, rcvTotal = 0, bonusrcv = 0;
+        console.log(team);
         team.forEach(function(x,n) {
             if (n > 5 || x.unit === null) return;
+            console.log(n);
+            console.log(x);
             var shipParam = getParameters(n);
             // hp
             var hp = getStatOfUnit(x,'hp');

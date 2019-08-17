@@ -1013,7 +1013,7 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
         // orb map effects
         mapEffect = { };
         if ($scope.data.effect) {
-            console.log($scope.data.effect);
+            console.log($scope.data);
             var data = effects[$scope.data.effect];
             console.log(effects);
             if (data.orb) enabledSpecials.push({ orb: data.orb, permanent: true, sourceSlot: -1 });

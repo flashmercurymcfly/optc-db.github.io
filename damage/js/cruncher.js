@@ -987,7 +987,6 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
 
     var initializeDataStructs = function() {
         initDone = true;
-        console.log(initDone);
         // get enabled specials
         var conflictWarning = false;
         enabledSpecials = [ ];
@@ -1001,8 +1000,9 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
         // orb map effects
         mapEffect = { };
         if ($scope.data.effect) {
-            
+            console.log($scope.data.effect);
             var data = effects[$scope.data.effect];
+            console.log(effects);
             if (data.orb) enabledSpecials.push({ orb: data.orb, permanent: true, sourceSlot: -1 });
             if (data.orb) enabledSpecials.push({ orb: data.orb, permanent: true, sourceSlot: -1 });
             if (data.chainModifier) mapEffect.chainModifier = data.chainModifier;
@@ -1017,6 +1017,8 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
         }
         if ($scope.data.comboShield) mapEffect.comboShield = $scope.data.comboShield;
         if ($scope.data.comboType) mapEffect.comboType = $scope.data.comboType;
+
+        console.log(mapEffect);
         // team
         team = $scope.data.team.map(function(x,n) {
             if (!$scope.tdata.team[n] || $scope.tdata.team[n].removed)

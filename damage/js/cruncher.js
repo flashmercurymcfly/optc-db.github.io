@@ -866,6 +866,7 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
         affinityMultiplier = [ ];
         captAffinityMultiplier = [ ];
         staticMultiplier = [ ];
+        console.log(enabledSpecials);
         enabledSpecials.forEach(function(data) {
             if (data === null) return;
             // notice specials with both atk and atkStatic defined are not supported right now
@@ -910,7 +911,8 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
             //Since we need this for defense down, and defense down gets saved for all slots we just go with slot 0
             var params = getParameters(0);
             params['unit'] = unit;
-            //Check if conditional Boosts are activated since they raise 
+            //Check if conditional Boosts are activated since they raise
+            console.log(enabledSpecials);
             for (var x=0;x<enabledSpecials.length;++x) {
                 if  (enabledSpecials[x].type=='condition'){
                     var thisMult = enabledSpecials[x].atk(params);
@@ -937,6 +939,8 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
             var multSpecial = 0;
             var baseDamage = 0;
             var specialid;
+            console.log(enabledSpecials);
+            console.log(enabledEffects);
             for (var y=0;y<enabledSpecials.length;++y) {
                 if (enabledSpecials[y].hasOwnProperty('staticMult')){
                     var slot = enabledSpecials[y].sourceSlot;
@@ -961,6 +965,8 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
             if((hitModifier == 'Great')||(hitModifier == 'Good')||(hitModifier == 'Perfect')){
                 resultDamage += staticDamage;
             }
+            console.log(enabledEffects);
+            console.log(enabledSpecials);
             for (var y=0;y<enabledEffects.length;++y) {
                 if (enabledEffects[y].hasOwnProperty('staticMult')){
                     var slot = enabledEffects[y].sourceSlot;

@@ -987,6 +987,7 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
 
     var initializeDataStructs = function() {
         initDone = true;
+        console.log(initDone);
         // get enabled specials
         var conflictWarning = false;
         enabledSpecials = [ ];
@@ -1000,7 +1001,7 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
         // orb map effects
         mapEffect = { };
         if ($scope.data.effect) {
-            console.log($scope.data.effect);
+            
             var data = effects[$scope.data.effect];
             if (data.orb) enabledSpecials.push({ orb: data.orb, permanent: true, sourceSlot: -1 });
             if (data.orb) enabledSpecials.push({ orb: data.orb, permanent: true, sourceSlot: -1 });

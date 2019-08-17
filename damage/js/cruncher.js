@@ -120,6 +120,7 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
         initializeDataStructs();
         var result = { };
         ['STR','QCK','DEX','PSY','INT'].forEach(function(type) {
+            console.log(type);
             result[type] = crunchForType(type);
         });
         result.team = getTeamDetails();
@@ -161,6 +162,7 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
     var crunchForType = function(type) {
         // compute base damage
         var damage = getBaseDamageForType(type,false);
+        console.log(damage);
         // compute best overall damage
         var noSorting = $scope.tdata.orderOverride.hasOwnProperty(type);
         var overallDamage = optimizeDamage(damage,noSorting,type);
@@ -221,6 +223,7 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
         // populate array with the damage of each unit in the team
         team.forEach(function(x,n) {
             if (n > 5 || x.unit === null || $scope.tdata.team[n].lock > 0) return;
+            console.log(x);
             var shipParam = getParameters(n);
             var friendCaptain = $scope.tdata.team[0];
             var captain = $scope.tdata.team[1];

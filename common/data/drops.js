@@ -2452,6 +2452,15 @@ window.drops = {
             'All Difficulties': [ 2665, 2666, -2485, -2483, -2481, -2479, -2475, -2431, -2271, -2247, -2244, -2152, -2150, -1763, -3336, -1749, -1192, -1764, -1131 ]
         },
         
+        {
+            name: 'Impel Down Breakout',
+            dropID: 'event125',
+            thumb: 2692,
+            nakama: null,
+            gamewith: null,
+            'All Difficulties': [ 2691, 2693, 2694, -2609, -2605, -2563, -2561, -2534, -2487, -2121, -2115, -2050 ]
+        },
+        
     ],
 
             
@@ -3219,6 +3228,15 @@ window.drops = {
         },
         
         {
+            name: 'Game!! Leo',
+            thumb: 2559,
+            nakama: null,
+            gamewith: 152009,
+            condition: 'Drops the Leo specific Limit Break crystals.',
+            'All Difficulties': [ 2558 ]
+        },
+        
+        {
             name: 'Clash!! STAMPEDE',
             thumb: 2642,
             nakama: null,
@@ -3254,6 +3272,35 @@ window.drops = {
             Master: [ 2393 ],
             Expert: [ 2393 ],
             Ultimate: [ 2393 ],
+        },
+        
+        {
+            name: 'Showdown!! Crocodile',
+            thumb: 2698,
+            nakama: null,
+            gamewith: null,
+            Master: [ 2697 ],
+            Expert: [ 2697 ],
+            Ultimate: [ 2697 ],
+        },
+        
+        {
+            name: 'Game!! Zorojuro',
+            thumb: 2707,
+            nakama: null,
+            gamewith: null,
+            condition: 'Drops the Zorojuro specific Limit Break crystals.',
+            'All Difficulties': [ 2707 ]
+        },
+        
+        {
+            name: 'Clash!! Law',
+            thumb: 2709,
+            nakama: null,
+            gamewith: null,
+            Master: [ 2708 ],
+            Expert: [ 2708 ],
+            Ultimate: [ 2708 ],
         },
         
         {
@@ -4505,15 +4552,6 @@ window.drops = {
             'Sanji': [ 1960, 83, 94, 266, 1180, 81, 87, 92, 98, 113 ],
             'Pudding': [ 1962, 83, 94, 266, 1180, 82, 88, 93, 99, 114 ],
         },
-        
-        {
-            name: 'Game! Leo',
-            thumb: 2559,
-            nakama: null,
-            gamewith: 152009,
-            condition: 'Drops the Leo specific Limit Break crystals.',
-            'All Difficulties': [ 2558 ]
-        },
 
         {
             name: 'Straw Hat Pirates!',
@@ -4887,13 +4925,14 @@ window.drops = {
         },
         
         {
-            name: 'Excape! The World\'s Strongest - Bullet',
+            name: 'The World\'s Strongest - Bullet',
             thumb: 2681,
             global: true,
             nakama: null,
             gamewith: 164245,
             showManual: true,
             'All Difficulties': [  ],
+            'Chopperman Missions': [ 2679 ],
         },
         
         {

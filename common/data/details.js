@@ -2091,6 +2091,16 @@ window.details = {
             { "description": "Boosts base ATK by 30" },
             { "description": "Boosts base ATK by 50" },
             { "description": "Acquire Potential 3: Enrage" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base ATK by 100" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base HP by 200" },
+            { "description": "Reduce base Special Cooldown by 2 turns" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -5529,7 +5539,10 @@ window.details = {
     562: {
         special: "Reduces crew's current HP by 40%, deals 15x the amount of HP subtracted as Typeless damage to all enemies, locks all orbs for 1 turn",
         specialName: "Great Flame Commandment: Flame Emperor",
-        captain: "Boosts HP of Shooter characters by 1.5x and boosts ATK of Shooter characters by 3x if they have a Matching orb, by 2x otherwise",
+        captain: {
+            "base": "Boosts HP of Shooter characters by 1.5x and boosts ATK of Shooter characters by 3x if they have a Matching orb, by 2x otherwise",
+            "level1": "Boosts HP of Shooter characters by 1.5x and boosts ATK of Shooter characters by 3.5x if they have a Matching orb, by 3x otherwise.",
+        },
         sailor: {
             "base": "None",
             "level1": "Boosts base ATK, HP and RCV of Shooter characters by 50",
@@ -5567,6 +5580,16 @@ window.details = {
             { "description": "Boosts base HP by 70" },
             { "description": "Boosts base HP by 110" },
             { "description": "Acquire Potential 3: Barrier Penetration" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Reduce base Special Cooldown by 1 turn" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Acquire new Captain Ability: Boosts HP of Shooter characters by 1.5x and boosts ATK of Shooter characters by 3.5x if they have a Matching orb, by 3x otherwise." },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 100" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Reduce base Special Cooldown by 3 turns" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -6496,6 +6519,16 @@ window.details = {
             { "description": "Boosts base ATK by 50" },
             { "description": "Boosts base ATK by 55" },
             { "description": "Acquire Potential 3: Reduce No Healing duration" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base ATK by 25" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Reduce base Special Cooldown by 2 turns" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 100" },
         ],
         potential: [
             {
@@ -9550,6 +9583,16 @@ window.details = {
             { "description": "Boosts base HP by 100" },
             { "description": "Boosts base HP by 130" },
             { "description": "Acquire Potential 3: Slot Bind Self-reduction" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 75" },
+            { "description": "Reduce base Special Cooldown by 1 turn" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -16806,7 +16849,10 @@ window.details = {
         specialName: "World Shaking Impact",
     },
     1268: {//Legend Blackbeard
-        captain: "Boosts ATK of all characters by 2.75x and their HP by 1.5x if you have a Striker, Shooter, Fighter and Slasher on your crew. Attacks will ignore defensive barriers and buffs.",
+        captain: {
+            "base": "Boosts ATK of all characters by 2.75x and their HP by 1.5x if you have a Striker, Shooter, Fighter and Slasher on your crew. Attacks will ignore defensive barriers and buffs.",
+            "level1": "Boosts ATK of all characters by 3.25x and their HP by 1.5x if you have a Striker, Shooter, Fighter and Slasher on your crew. Attacks will ignore defensive barriers and buffs.",
+        },
         captainNotes: "Attacks are still affected by DEF value. DEF boost buffs (Blue shield) still reduce your damage and you can not kill through Resilience, but Damage Negating (Yellow shield), % Damage Reduction (Rainbow shield), Barriers and Threshold Damage Reduction are ignored. Multiple class characters count as a character of each class. Enemy attacks will go through YOUR defensive buffs.",
         special: "Cuts the current HP of each enemy by 30%. If Blackbeard is a captain, this ability will ignore damage negating abilities and barriers",
         specialNotes: "If Blackbeard is not a captain, the effect works exactly like Whitebeard special and is affected by barriers.<br>#{ignoreBarrier}",
@@ -16847,6 +16893,16 @@ window.details = {
             { "description": "Boosts base ATK by 60" },
             { "description": "Boosts base HP by 80" },
             { "description": "Acquire Potential 3: Slot Bind Self-reduction" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Reduce base Special Cooldown by 1 turn" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Acquire new Captain Ability: Boosts ATK of all characters by 3.25x and their HP by 1.5x if you have a Striker, Shooter, Fighter and Slasher on your crew. Attacks will ignore defensive barriers and buffs." },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base HP by 200" },
+            { "description": "Reduce base Special Cooldown by 3 turns" },
+            { "description": "Boosts base ATK by 150" },
         ],
         potential: [
             {
@@ -18401,6 +18457,16 @@ window.details = {
             { "description": "Boosts base HP by 70" },
             { "description": "Boosts base HP by 100" },
             { "description": "Acquire Potential 3: Critical Hit" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Reduce base Special Cooldown by 1 turn" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base HP by 250" },
+            { "description": "Reduce base Special Cooldown by 4 turns" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -19782,6 +19848,16 @@ window.details = {
             { "description": "Boosts base ATK by 30" },
             { "description": "Boosts base ATK by 50" },
             { "description": "Acquire Potential 3: Enrage" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base ATK by 100" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base HP by 200" },
+            { "description": "Reduce base Special Cooldown by 2 turns" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -21969,6 +22045,16 @@ window.details = {
             { "description": "Boosts base RCV by 25" },
             { "description": "Boosts base HP by 100" },
             { "description": "Acquire Potential 3: Barrier Penetration" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base HP by 150" },
+            { "description": "Reduce base Special Cooldown by 1 turn" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -22395,6 +22481,16 @@ window.details = {
             { "description": "Boosts base RCV by 25" },
             { "description": "Boosts base HP by 100" },
             { "description": "Acquire Potential 3: Barrier Penetration" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base HP by 150" },
+            { "description": "Reduce base Special Cooldown by 1 turn" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -23285,6 +23381,16 @@ window.details = {
             { "description": "Boosts base HP by 70" },
             { "description": "Boosts base HP by 80" },
             { "description": "Acquire Potential 3: Critical Hit" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base HP by 150" },
+            { "description": "Reduce base Special Cooldown by 1 turn" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -28073,7 +28179,10 @@ window.details = {
     1816: {// Ace 6+
         special: "Reduces crew's current HP by 40%, deals 15x the amount of HP subtracted as Typeless damage to all enemies, boosts ATK of Shooter characters by 2x for 1 turn",
         specialName: "Great Flame Commandment: Flame Emperor • Flame Wheel",
-        captain: "Boosts HP of Shooter characters by 1.5x and boosts ATK of Shooter characters by 3.25x if they have a Matching orb, by 2.25x otherwise",
+        captain: {
+            "base": "Boosts HP of Shooter characters by 1.5x and boosts ATK of Shooter characters by 3.25x if they have a Matching orb, by 2.25x otherwise",
+            "level1": "Boosts HP of Shooter characters by 1.5x and boosts ATK of Shooter characters by 3.75x if they have a Matching orb, by 3.5x otherwise.",
+        },
         sailor: {
             "base": "None",
             "level1": "Boosts base ATK, HP and RCV of Shooter characters by 50",
@@ -28111,6 +28220,16 @@ window.details = {
             { "description": "Boosts base HP by 70" },
             { "description": "Boosts base HP by 110" },
             { "description": "Acquire Potential 3: Barrier Penetration" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Reduce base Special Cooldown by 1 turn" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Acquire new Captain Ability: Boosts HP of Shooter characters by 1.5x and boosts ATK of Shooter characters by 3.75x if they have a Matching orb, by 3.5x otherwise." },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 100" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Reduce base Special Cooldown by 3 turns" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -29040,6 +29159,16 @@ window.details = {
             { "description": "Boosts base HP by 100" },
             { "description": "Acquire new Captain Ability: Boosts ATK of all characters proportionally to the crew's current HP, by 3.25x at max and their HP by 1.35x" },
             { "description": "Acquire Potential 2: Enrage" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base HP by 150" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Reduce base Special Cooldown by 3 turns" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -30755,6 +30884,16 @@ window.details = {
             { "description": "Boosts base HP by 70" },
             { "description": "Boosts base HP by 100" },
             { "description": "Acquire Potential 3: Critical Hit" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Reduce base Special Cooldown by 1 turn" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base HP by 250" },
+            { "description": "Reduce base Special Cooldown by 4 turns" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -31319,18 +31458,18 @@ window.details = {
             { "description": "Boosts base HP by 30" },
             { "description": "Boosts base RCV by 5" },
             { "description": "Acquire Potential 1: [DEX] Damage Reduction" },
-            { "description": "Acquire new Captain Ability: " },
+            { "description": "Acquire new Captain Ability: If there is a [STR], [QCK] and [PSY] character in your crew, boosts ATK of [STR], [QCK] and [PSY] characters by 2.1x and their HP and RCV by 1.1x" },
             { "description": "Acquire Sailor Ability 1: Boosts base ATK, HP and RCV of Free Spirit characters by 30" },
             { "description": "Boosts base ATK by 15" },
             { "description": "Boosts base HP by 40" },
             { "description": "Boosts base RCV by 10" },
-            { "description": "Acquire new Captain Ability: " },
+            { "description": "Acquire new Captain Ability: If there is a [STR], [QCK] and [PSY] character in your crew, boosts ATK of [STR], [QCK] and [PSY] characters by 2.2x and their HP and RCV by 1.1x" },
             { "description": "Acquire 1 additional Socket slot" },
             { "description": "Reduce base Special Cooldown by 1 turn" },
             { "description": "Boosts base ATK by 20" },
             { "description": "Boosts base HP by 50" },
             { "description": "Boosts base RCV by 15" },
-            { "description": "Acquire new Captain Ability: " },
+            { "description": "Acquire new Captain Ability: If there is a [STR], [QCK] and [PSY] character in your crew, boosts ATK of [STR], [QCK] and [PSY] characters by 2.4x and their HP and RCV by 1.1x" },
             { "description": "Reduce base Special Cooldown by 2 turns" },
             { "description": "Boosts base ATK by 25" },
             { "description": "Boosts base HP by 60" },
@@ -31340,7 +31479,7 @@ window.details = {
             { "description": "Boosts base ATK by 30" },
             { "description": "Boosts base HP by 55" },
             { "description": "Reduce base Special Cooldown by 4 turns" },
-            { "description": "Acquire new Captain Ability: " },
+            { "description": "Acquire new Captain Ability: If there is a [STR], [QCK] and [PSY] character in your crew, boosts ATK of [STR], [QCK] and [PSY] characters by 2.5x and their HP and RCV by 1.2x" },
             { "description": "Boosts base ATK by 30" },
             { "description": "Boosts base HP by 50" },
             { "description": "Acquire Sailor Ability 2: Makes [PSY] orbs beneficial for this character" },
@@ -31349,11 +31488,21 @@ window.details = {
             { "description": "Boosts base RCV by 50" },
             { "description": "Reduce base Special Cooldown by 5 turns" },
             { "description": "Acquire 1 additional Socket slot" },
-            { "description": "Acquire new Captain Ability: " },
+            { "description": "Acquire new Captain Ability: If there is a [STR], [QCK] and [PSY] character in your crew, boosts ATK of [STR], [QCK] and [PSY] characters by 2.75x and their HP and RCV by 1.2x" },
             { "description": "Boosts base ATK by 60" },
             { "description": "Boosts base HP by 60" },
-            { "description": "Acquire new Captain Ability: " },
+            { "description": "Acquire new Captain Ability: If there is a [STR], [QCK] and [PSY] character in your crew, boosts ATK of [STR], [QCK] and [PSY] characters by 3.44x if they have a [STR] orb, by 2.75x otherwise and their HP and RCV by 1.2x" },
             { "description": "Acquire Potential 2: Slot Bind Self-reduction" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base HP by 150" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Reduce base Special Cooldown by 3 turns" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -34254,6 +34403,16 @@ window.details = {
             { "description": "Boosts base HP by 80" },
             { "description": "Boosts base HP by 100" },
             { "description": "Acquire Potential 3: Critical Hit" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base HP by 200" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -38643,6 +38802,16 @@ window.details = {
             { "description": "Boosts base HP by 70" },
             { "description": "Boosts base HP by 80" },
             { "description": "Acquire Potential 3: Critical Hit" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base HP by 150" },
+            { "description": "Reduce base Special Cooldown by 1 turn" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -40044,7 +40213,7 @@ window.details = {
             { "description": "Boosts base HP by 30" },
             { "description": "Boosts base HP by 50" },
             { "description": "Boosts base HP by 50" },
-            { "description": "Acquire Sailor Ability 2: " },
+            { "description": "Acquire Sailor Ability 2: Makes [PSY] and [INT] orbs beneficial for Shooter characters" },
             { "description": "Boosts base HP by 60" },
             { "description": "Boosts base HP by 80" },
             { "description": "Acquire Potential 3: Barrier Penetration" },
@@ -41753,6 +41922,16 @@ window.details = {
             { "description": "Boosts base HP by 80" },
             { "description": "Boosts base HP by 100" },
             { "description": "Acquire Potential 3: Critical Hit" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base RCV by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base HP by 200" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -44057,11 +44236,11 @@ window.details = {
     2443: {//TM Doflamingo
         captain: {
             "base": "Boosts ATK of Driven characters by 1.5x. If you use \"Off White\" in this turn boosts ATK of Driven characters by 2x instead.",
-            "level1": "Not Translated",
-            "level2": "Not Translated",
-            "level3": "Not Translated",
-            "level4": "Not Translated",
-            "level5": "Not Translated",
+            "level1": "Boosts ATK of Driven characters by 1.5x. If you use \"Off White\" in this turn boosts ATK of Driven characters by 2.1x instead.",
+            "level2": "Boosts ATK of Driven characters by 1.75x. If you use \"Off White\" in this turn boosts ATK of Driven characters by 2.45x instead.",
+            "level3": "Boosts ATK of Driven characters by 2x and recovers 500 HP at end of each turn. If you use \"Off White\" in this turn boosts ATK of Driven characters by 2.8x instead.",
+            "level4": "Boosts ATK of Driven characters by 2.25x and recovers 500 HP at end of each turn. If you use \"Off White\" in this turn boosts ATK of Driven characters by 3.15x instead.",
+            "level5": "Boosts ATK of Driven characters by 2.5x and recovers 500 HP at end of each turn. If you use \"Off White\" in this turn boosts ATK of Driven characters by 3.25x instead.",
             "level6": "Boosts ATK of Driven characters by 2.75x and recovers 500 HP at end of each turn. If you use \"Off White\" in this turn boosts ATK of Driven characters by 3.5x instead.",
         },
         special: "Removes RCV DOWN duration completely and reduces damage received by 80% for 2 turns. If your Captain is a Driven character, changes all Driven character's orbs, including [BLOCK] orbs, into Matching orbs",
@@ -44077,18 +44256,18 @@ window.details = {
             { "description": "Boosts base ATK by 10" },
             { "description": "Boosts base ATK by 10" },
             { "description": "Acquire Potential 1: Slot Bind Self-reduction" },
-            { "description": "Acquire new Captain Ability: " },
+            { "description": "Acquire new Captain Ability: Boosts ATK of Driven characters by 1.5x. If you use \"Off White\" in this turn boosts ATK of Driven characters by 2.1x instead." },
             { "description": "Acquire Sailor Ability 1: Reduces Silence duration on this character by 3 turns" },
             { "description": "Boosts base HP by 20" },
             { "description": "Boosts base HP by 20" },
             { "description": "Boosts base HP by 20" },
-            { "description": "Acquire new Captain Ability: " },
+            { "description": "Acquire new Captain Ability: Boosts ATK of Driven characters by 1.75x. If you use \"Off White\" in this turn boosts ATK of Driven characters by 2.45x instead." },
             { "description": "Acquire 1 additional Socket slot" },
             { "description": "Reduce base Special Cooldown by 1 turn" },
             { "description": "Boosts base ATK by 10" },
             { "description": "Boosts base ATK by 15" },
             { "description": "Boosts base ATK by 20" },
-            { "description": "Acquire new Captain Ability: " },
+            { "description": "Acquire new Captain Ability: Boosts ATK of Driven characters by 2x and recovers 500 HP at end of each turn. If you use \"Off White\" in this turn boosts ATK of Driven characters by 2.8x instead." },
             { "description": "Reduce base Special Cooldown by 2 turns" },
             { "description": "Boosts base RCV by 30" },
             { "description": "Boosts base RCV by 30" },
@@ -44098,7 +44277,7 @@ window.details = {
             { "description": "Boosts base HP by 30" },
             { "description": "Boosts base HP by 30" },
             { "description": "Reduce base Special Cooldown by 4 turns" },
-            { "description": "Acquire new Captain Ability: " },
+            { "description": "Acquire new Captain Ability: Boosts ATK of Driven characters by 2.25x and recovers 500 HP at end of each turn. If you use \"Off White\" in this turn boosts ATK of Driven characters by 3.15x instead." },
             { "description": "Boosts base HP by 60" },
             { "description": "Boosts base HP by 70" },
             { "description": "Acquire Sailor Ability 2: Boosts base ATK, HP and RCV of Driven characters by 30" },
@@ -44107,7 +44286,7 @@ window.details = {
             { "description": "Boosts base ATK by 50" },
             { "description": "Reduce base Special Cooldown by 5 turns" },
             { "description": "Acquire 1 additional Socket slot" },
-            { "description": "Acquire new Captain Ability: " },
+            { "description": "Acquire new Captain Ability: Boosts ATK of Driven characters by 2.5x and recovers 500 HP at end of each turn. If you use \"Off White\" in this turn boosts ATK of Driven characters by 3.25x instead." },
             { "description": "Boosts base HP by 70" },
             { "description": "Boosts base HP by 100" },
             { "description": "Acquire new Captain Ability: Boosts ATK of Driven characters by 2.75x and recovers 500 HP at end of each turn. If you use \"Off White\" in this turn boosts ATK of Driven characters by 3.5x instead." },
@@ -44190,6 +44369,16 @@ window.details = {
             { "description": "Boosts base HP by 100" },
             { "description": "Boosts base HP by 130" },
             { "description": "Acquire Potential 3: Slot Bind Self-reduction" },
+            { "description": "LOCKED WITH KEY: Missing Data" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 25" },
+            { "description": "Boosts base HP by 50" },
+            { "description": "Boosts base ATK by 50" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base HP by 100" },
+            { "description": "Boosts base RCV by 75" },
+            { "description": "Reduce base Special Cooldown by 1 turn" },
+            { "description": "Boosts base ATK by 100" },
         ],
         potential: [
             {
@@ -52716,6 +52905,127 @@ window.details = {
                     "Level 3: Adds 3% of this character's base ATK and HP to the supported character's base ATK and HP.",
                     "Level 4: Adds 4% of this character's base ATK and HP to the supported character's base ATK and HP.",
                     "Level 5: Adds 5% of this character's base ATK and HP to the supported character's base ATK and HP."
+                ]
+            }
+        ]
+    },
+    2722: {//Marco
+        captain: "Boosts ATK of Powerhouse characters by 2x and recovers 1x character's RCV at the end of each turn.",
+        special: "Reduces Paralysis duration by 3 turns, changes [RCV], [TND], [EMPTY], [BLOCK] and [BOMB] orbs on Powerhouse characters into Matching orbs and recovers 8x character's RCV in HP at the end of each turn for 3 turns.",
+        specialName: "Blue Flames of Healing",
+    },
+    2723: {//Marco
+        captain: "Boosts ATK of Powerhouse characters by 2.5x and recovers 2x character's RCV at the end of each turn.",
+        special: "Reduces Paralysis duration by 3 turns, changes [RCV], [TND], [EMPTY], [BLOCK] and [BOMB] orbs on Powerhouse characters into Matching orbs and recovers 8x character's RCV in HP at the end of each turn for 3 turns.",
+        specialName: "Blue Flames of Healing",
+        support: [
+            {
+                "Characters": "Powerhouse characters",
+                "description": [
+                    "Level 1: Adds 1% of this character's base ATK, HP and RCV to the supported character's base ATK, HP and RCV.",
+                    "Level 2: Adds 1% of this character's base ATK, HP and RCV to the supported character's base ATK, HP and RCV.",
+                    "Level 3: Adds 2% of this character's base ATK, HP and RCV to the supported character's base ATK, HP and RCV.",
+                    "Level 4: Adds 2% of this character's base ATK, HP and RCV to the supported character's base ATK, HP and RCV.",
+                    "Level 5: Adds 3% of this character's base ATK, HP and RCV to the supported character's base ATK, HP and RCV."
+                ]
+            }
+        ]
+    },
+    2724: {//Nekomamushi
+        captain: "Boosts ATK of [STR] characters by 2x.",
+        special: "Reduces Chain Multiplier Limit and Chain Coefficient Reduction duration by 2 turns and adds 0.5x to Chain multiplier for 1 turn.",
+        specialName: "Visit Solicitation",
+    },
+    2725: {//Kanjuro
+        captain: "Boosts ATK of Striker characters by 1.5x.",
+        special: "Reduces Paralysis and ATK DOWN duration by 3 turns. If you are on a Treasure Map, boosts the Color Affinity of Powerhouse characters depending on your Treasure Map Level for 1 turn",
+        specialName: "Escaping Sparrow",
+        specialNotes: "Level 1-10: 1.75x affinity boost<br\>Level 11-20: 2x affinity boost<br\>Level 21+: 2.25x affinity boost",
+    },
+    2726: {//Raizo
+        captain: "Boosts ATK of Shooter characters by 1.5x.",
+        special: "If your Captain is a Powerhouse or Shooter character character, changes all orbs on Shooter and Powerhouse characters into Matching orbs and locks all orbs for 1 turn.",
+        specialName: "Smoke Escape Technique",
+    },
+    2727: {//Kinemon
+        captain: "Boosts ATK of Powerhouse characters by 2.5x and their HP by 1.2x. If you use \"Flaming Flash\" on this Kinemon boosts ATK of Powerhouse characters by 3.5x instead for 3 turns.",
+        special: "Deals 30x character's ATK in [STR] damage to one enemy, reduces enemies' Percent Damage Reduction and Threshold Damage Reduction duration by 3 turns. If you are on a Treasure Map, boosts ATK of Powerhouse characters depending on your Treasure Map Level for 1 turn",
+        specialNotes: "Level 1-10: 1.75x atk boost<br\>Level 11-20: 2x atk boost<br\>Level 21+: 2.25x atk boost",
+        specialName: "Flaming Flash",
+    },
+    2728: {//TM Hawkins
+        captain: "Boosts ATK of Striker and Cerebral characters by 1.5x",
+        special: [
+            {
+                "description": "Changes adjacent orbs into Matching Orbs and delays all enemies for 1 turn.",
+                "cooldown": [ 29, null ],
+            },
+            {
+                "description": "Changes adjacent orbs into Matching Orbs. If the HP of the enemy with the highest Maximum HP is below 70% at the time the special is activated,  ignores Delay Debuff Protection and delays all enemies for 1 turn, delays all enemies for 1 turn otherwise.",
+                "cooldown": [ 37, null ],
+            },
+        ],
+        specialName: "Strawman Cards Pursuit",
+    },
+    2729: {//TM Hawkins
+        captain: {
+            "base": "Boosts ATK of Striker and Cerebral characters by 1.75x",
+            "level1": "Not Translated",
+            "level2": "Not Translated",
+            "level3": "Not Translated",
+            "level4": "Not Translated",
+            "level5": "Not Translated",
+            "level6": "Boosts ATK of Striker and Cerebral characters by 3.25x and makes [QCK] orbs beneficial for Cerebral and Striker characters",
+        },
+        special: [
+            {
+                "description": "Changes adjacent orbs into Matching Orbs and delays all enemies for 1 turn.",
+                "cooldown": [ 29, null ],
+            },
+            {
+                "description": "Changes adjacent orbs into Matching Orbs. If the HP of the enemy with the highest Maximum HP is below 70% at the time the special is activated,  ignores Delay Debuff Protection and delays all enemies for 1 turn, delays all enemies for 1 turn otherwise.",
+                "cooldown": [ 37, null ],
+            },
+        ],
+        specialName: "Strawman Cards Pursuit",
+        sailor: {
+            "base": "None",
+            "level1": "Boosts base ATK, HP and RCV of Striker characters by 50",
+            "level2": "Makes [DEX] orbs beneficial for this character",
+        },
+        sailorNotes: "#{beneficial}",
+        potential: [
+            {
+                "Name": "Enrage",
+                "description": [
+                    "Level 1: Boosts base ATK by ?",
+                    "Level 2: Boosts base ATK by ?",
+                    "Level 3: Boosts base ATK by ?",
+                    "Level 4: Boosts base ATK by ?",
+                    "Level 5: Boosts base ATK by ?"
+                ]
+            },
+            {
+                "Name": "Reduce No Healing duration",
+                "description": [
+                    "Level 1: Reduces No Healing duration by ? turn",
+                    "Level 2: Reduces No Healing duration by ? turn",
+                    "Level 3: Reduces No Healing duration by ? turn",
+                    "Level 4: Reduces No Healing duration by ? turn",
+                    "Level 5: Reduces No Healing duration by ? turn"
+                ]
+            },
+        ],
+        potentialNotes: "#{enrage}",
+        support: [
+            {
+                "Characters": "Kaido",
+                "description": [
+                    "Level 1: Adds 4% of this character's base ATK to the supported character's base ATK",
+                    "Level 2: Adds 5% of this character's base ATK to the supported character's base ATK",
+                    "Level 3: Adds 6% of this character's base ATK to the supported character's base ATK",
+                    "Level 4: Adds 9% of this character's base ATK to the supported character's base ATK",
+                    "Level 5: Adds 11% of this character's base ATK to the supported character's base ATK"
                 ]
             }
         ]

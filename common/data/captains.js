@@ -1051,7 +1051,7 @@ window.captains = {
         hp: function(p) { return p.unit.class.has("Shooter") ? 1.5 : 1; }
     },
     562: {
-        atk: function(p) { return !p.unit.class.has("Shooter") ? 1 : (((CrunchUtils.getOrbMultiplier(p.orb, p.unit.type, p.unit.class, 1, 2, [p.friendCaptain, p.captain], p.effectName) == 2) && (p.orb != 'g')) ? 3 : 2); },
+        atk: function(p) { return !p.unit.class.has("Shooter") ? 1 : (((CrunchUtils.getOrbMultiplier(p.orb, p.unit.type, p.unit.class, 1, 2, [p.friendCaptain, p.captain], p.effectName) == 2) && (p.orb != 'g')) ? p.actions[p.sourceSlot] ? 3.5 : 3 : p.actions[p.sourceSlot] ? 3 : 2); },
         hp: function(p) { return p.unit.class.has("Shooter") ? 1.5 : 1; }
     },
     568: {
@@ -3344,7 +3344,7 @@ window.captains = {
     },
     1268: {
         atk: function(p) { if(p.classCount.Striker>=1 && p.classCount.Fighter>=1 && p.classCount.Shooter>=1 && p.classCount.Slasher>=1)
-                return 2.75;
+                return p.actions[p.sourceSlot] ? 3.25 : 2.75;
             else
                 return 1;
                },
@@ -5609,7 +5609,7 @@ window.captains = {
         hitModifiers: ["Perfect", "Perfect", "Perfect", "Perfect", "Perfect", "Perfect"]
     },
     1816: {
-        atk: function(p) { return !p.unit.class.has("Shooter") ? 1 : (((CrunchUtils.getOrbMultiplier(p.orb, p.unit.type, p.unit.class, 1, 2, [p.friendCaptain, p.captain], p.effectName) == 2) && (p.orb != 'g')) ? 3.25 : 2.25); },
+        atk: function(p) { return !p.unit.class.has("Shooter") ? 1 : (((CrunchUtils.getOrbMultiplier(p.orb, p.unit.type, p.unit.class, 1, 2, [p.friendCaptain, p.captain], p.effectName) == 2) && (p.orb != 'g')) ? p.actions[p.sourceSlot] ? 3.75 : 3.25 : p.actions[p.sourceSlot] ? 3.5 : 2.25); },
         hp: function(p) { return p.unit.class.has("Shooter") ? 1.5 : 1; }
     },
     1817: {
@@ -9633,13 +9633,38 @@ window.captains = {
     2714: {
         atk: function(p) { return p.unit.class.has("Striker") ? 2 : 1; }
     },
-    2713: {
+    2720: {
         atk: function(p) { return p.unit.class.has("Powerhouse") ? 2 : 1; },
         rcv: function(p) { return 0; },
     },
-    2714: {
+    2721: {
         atk: function(p) { return p.unit.class.has("Powerhouse") ? 2.75 : 1; },
         rcv: function(p) { return 0; },
+    },
+    2722: {
+        atk: function(p) { return p.unit.class.has("Powerhouse") ? 2 : 1; },
+    },
+    2723: {
+        atk: function(p) { return p.unit.class.has("Powerhouse") ? 2.5 : 1; },
+    },
+    2724: {
+        atk: function(p) { return p.unit.type == "STR" ? 2 : 1; },
+    },
+    2725: {
+        atk: function(p) { return p.unit.class.has("Striker") ? 1.5 : 1; },
+    },
+    2726: {
+        atk: function(p) { return p.unit.class.has("Shooter") ? 1.5 : 1; },
+    },
+    2727: {
+        atk: function(p) { return p.unit.class.has("Powerhouse") ? p.actions[p.sourceSlot] ? 3.5 : 2.5 : 1; },
+        hp: function(p) { return p.unit.class.has("Powerhouse") ? 1.2 : 1; },
+    },
+    2728: {
+        atk: function(p) { return (p.unit.class.has("Striker") || p.unit.class.has("Cerebral")) ? 1.5 : 1; },
+    },
+    2729: {
+        atk: function(p) { return (p.unit.class.has("Striker") || p.unit.class.has("Cerebral")) ? p.actions[p.sourceSlot] ? 3.25 : 1.75 : 1; },
     },
     3333: {
         hitAtk: function(p) {

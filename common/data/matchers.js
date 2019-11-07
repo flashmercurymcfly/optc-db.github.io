@@ -225,7 +225,7 @@ window.matchers = [
     {
         name: 'Type-boosting specials',
         target: 'special',
-        matcher: /Boosts (ATK|HP|RCV|ATK and HP|ATK and RCV|HP and RCV|ATK, HP and RCV) of[^,]+(STR|DEX|QCK|PSY|INT)\b/i
+        matcher: /Boosts (ATK|HP|RCV|ATK and HP|ATK and RCV|HP and RCV|ATK, HP and RCV) of[^,]+(STR|DEX|QCK|PSY|INT|Type)\b/i
     },
 
     {
@@ -246,7 +246,7 @@ window.matchers = [
         matcher: /Boosts ATK[^,]+(all characters)/i
     },
     
-    {
+    /*{
         name: '1.5x ATK specials',
         target: 'special',
         matcher: /Boosts ATK\D*by 1.5x/i
@@ -268,6 +268,30 @@ window.matchers = [
         name: '2.25x ATK specials',
         target: 'special',
         matcher: /Boosts ATK\D*by 2.25x/i
+    },*/
+
+    {
+        name: 'ATK boosters',
+        target: 'special',
+        matcher: /boosts( own ATK| ATK of)/i
+    },
+    
+    {
+        name: 'Combo Boost Specials',
+        target: 'special',
+        matcher: /Boost.+hit in the chain/i
+    },
+
+    {
+        name: 'Orb boosters',
+        target: 'special',
+        matcher: /amplifies.+orb/i
+    },
+    
+    {
+        name: 'Color Affinity boosters',
+        target: 'special',
+        matcher: /Boosts the Color Affinity/i
     },
 
     {
@@ -307,15 +331,39 @@ window.matchers = [
     },
     
     {
-        name: 'Color Affinity boosters',
+        name: '1.5x Boost specials',
         target: 'special',
-        matcher: /Boosts the Color Affinity/i
+        matcher: /[Boosts |Amplifies ]\D*by 1.5x/i
+    },
+
+    {
+        name: '1.75x Boost specials',
+        target: 'special',
+        matcher: /[Boosts |Amplifies ]\D*by 1.75x/i
+    },
+
+    {
+        name: '2x Boost specials',
+        target: 'special',
+        matcher: /[Boosts |Amplifies ]\D*by 2x/i
     },
     
     {
-        name: 'Combo Boost Specials',
+        name: '2.25x Boost specials',
         target: 'special',
-        matcher: /Boost.+hit in the chain/i
+        matcher: /[Boosts |Amplifies ]\D*by 2.25x/i
+    },
+    
+    {
+        name: '2.5x Boost specials',
+        target: 'special',
+        matcher: /[Boosts |Amplifies ]\D*by 2.5x/i
+    },
+    
+    {
+        name: '2.75x Boost specials',
+        target: 'special',
+        matcher: /[Boosts |Amplifies ]\D*by 2.75x/i
     },
     
     {
@@ -323,14 +371,8 @@ window.matchers = [
         target: 'special',
         matcher: /Boosts RCV/i
     },
-
-    {
-        name: 'Orb boosters',
-        target: 'special',
-        matcher: /amplifies.+orb/i
-    },
     
-    {
+    /*{
         name: '1.5x Orb boost specials',
         target: 'special',
         matcher: /amplifies.+orb\D*by 1.5x/i
@@ -352,7 +394,7 @@ window.matchers = [
         name: '2.25x Orb boost specials',
         target: 'special',
         matcher: /amplifies.+orb\D*by 2.25x/i
-    },
+    },*/
     
     {
         name: 'Chain Boosters',
@@ -1144,7 +1186,7 @@ window.matchers = [
     {
         name: 'Tap Timing Activated Support',
         target: 'support',
-        matcher: /perfect|great|good/i
+        matcher: /PERFECT|GREAT|GOOD/
     },
     
     {
@@ -1199,6 +1241,12 @@ window.matchers = [
         name: 'Orb lockers',
         target: 'support',
         matcher: /locks (the supported character's orb|orbs|all orbs|orb|own orb)/i
+    },
+    
+    {
+        name: 'Chain Boosters',
+        target: 'support',
+        matcher: /Adds.+to Chain/i 
     },
     
     {

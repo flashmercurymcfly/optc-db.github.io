@@ -4575,19 +4575,20 @@ window.drops = {
     ],
 
             
-    'Kisuna Clash': [
+    'Kizuna Clash': [
         
         {
             name: 'Zoro & Sanji',
             dropID: 'bond1',
             thumb: 2531,
             nakama: null,
-            gamewith: [ 150056, 155125, 159694, 156784, 159694, 164568 ],
+            gamewith: [ 150056, 155125, 159694, 156784, 164568 ],
             'All Difficulties': [ 2531 ],
             'Round 1': [ 2518 ],
             'Round 2': [ 2615 ],
             'Round 4': [ 2629 ],
             'Round 5': [ 2682 ],
+            'Round 6': [ 2733 ],
         },/*
         
         {

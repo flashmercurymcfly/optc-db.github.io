@@ -9982,7 +9982,7 @@ window.captains = {
                },
     },
     2815: {
-        atk: function(p) { return p.unit.class.has("Free Spirit") ? ((CrunchUtils.getOrbMultiplier(p.orb, p.unit.type, p.unit.class, 1, 2, [p.friendCaptain, p.captain], p.effectName) == 2) && (p.orb != 'g')) ? 3.25 : 2.5 : 1; },
+        atk: function(p) { return p.unit.class.has("Free Spirit") ? p.actions[p.sourceSlot] ? ((CrunchUtils.getOrbMultiplier(p.orb, p.unit.type, p.unit.class, 1, 2, [p.friendCaptain, p.captain], p.effectName) == 2) && (p.orb != 'g')) ? 3.25 : 2.5 : 2.5 : 1; },
     },
     2816: {
         atk: function(p) { return p.unit.type == "PSY" ? 2.5 : 1; },
@@ -9991,6 +9991,18 @@ window.captains = {
     2817: {
         atk: function(p) { return p.unit.class.has("Slasher") ? 2.5 : 1; },
         hp: function(p) { return p.unit.class.has("Slasher") ? 1.2 : 1; },
+    },
+    2820: {
+        atk: function(p) { return p.unit.type == "DEX" ? 1.5 : 1; },
+    },
+    2821: {
+        atk: function(p) { return p.unit.class.has("Cerebral") ? 1.5 : 1; },
+    },
+    2822: {
+        atk: function(p) { return p.unit.class.has("Free Spirit") ? 1.5 : 1; },
+    },
+    2823: {
+        atk: function(p) { return p.unit.class.has("Slasher") ? p.actions[p.sourceSlot] ? 3.25 : 1.75 : 1; },
     },
     3333: {
         hitAtk: function(p) {

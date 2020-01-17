@@ -8875,6 +8875,20 @@ window.specials = {
             });
         }
     },
+    2820: {
+        affinity: function(p) { return (p.unit.type == "DEX" || p.unit.type == "QCK") ? window.specials[2820].multiplier : 1; },
+        onActivation: function(p) {
+            var n = (window.specials[2820].multiplier == 1.5 ? 1 : window.specials[2820].multiplier == 1.75 ? 2 : 0);
+            window.specials[2820].multiplier = [1.5, 1.75, 2][n];
+            p.scope.notify({
+                text: 'Using the ' + [1.5, 1.75, 2][n] + 'x affinity boost. To switch to the ' + [1.75, 2, 1.5][n] + 'x affinity boost, disable and re-enable this special',
+                name: '2820warning'
+            });
+        }
+    },
+    2822: {
+        staticMult: function(p) { return 35; }
+    },
     3333: {
         atk: function(p) { return 1.75; },
         type: "type",
@@ -8935,6 +8949,14 @@ window.specials = {
     },
     3374: {
         orb: function(p) { return CrunchUtils.getOrbMultiplier(p.orb, p.unit.type, p.unit.class, 1, 1.5, [p.friendCaptain, p.captain], p.effectName); },
+    },
+    3375: {
+        atk: function(p) { return p.unit.class.has("Cerebral") ? 1.75 : 1; },
+        type: "class"
+    },
+    3376: {
+        atk: function(p) { return p.unit.class.has("Cerebral") ? 1.75 : 1; },
+        type: "class"
     },
     5000: {
         atk: function(p) { return p.unit.type == "PSY" || p.unit.type == "INT" ? 1.5 : 1; },

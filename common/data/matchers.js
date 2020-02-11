@@ -389,6 +389,18 @@ window.matchers = [
         target: 'special',
         matcher: /(Following the activation|If during that turn)/i
     },
+
+    {
+        name: 'Multiple-Turn boosting specials',
+        target: 'special',
+        matcher: /x for \d{1,} turns/i
+    },
+
+    {
+        name: 'Multiple-Turn Buff/Debuff specials',
+        target: 'special',
+        matcher: /for \d{1,} turns/i
+    },
     
     {
         name: '1.5x Boost specials',
@@ -661,6 +673,12 @@ window.matchers = [
         name: 'HP-based damage dealers',
         target: 'specialNotes',
         matcher: /specialProportional/i
+    },
+
+    {
+        name: 'Multiple-Turn Buff/Debuff Removing specials',
+        target: 'special',
+        matcher: /by \d{1,} turns/i
     },
 
     {
@@ -1158,9 +1176,21 @@ window.matchers = [
     },
     
     {
-        name: 'Slot Bind Self-reduction Potential Ability',
+        name: 'Slot Bind Reduction Potential Ability',
         target: 'limit',
-        matcher: /Slot Bind Self-reduction/i
+        matcher: /Slot Bind Reduction/i
+    },
+    
+    {
+        name: 'Ship Bind Reduction Potential Ability',
+        target: 'limit',
+        matcher: /Ship-Bind Reduction/i
+    },
+    
+    {
+        name: 'Sailor Despair Reduction Potential Ability',
+        target: 'limit',
+        matcher: /Sailor-Despair Reduction/i
     },
     
     {
@@ -1433,6 +1463,18 @@ window.matchers = [
         name: 'Blindness reducers',
         target: 'support',
         matcher: /(reduces|removes).+blindness.+duration/i
+    },
+    
+    {
+        name: 'Chain Multiplier Limit and Chain Lock reducer',
+        target: 'support',
+        matcher: /(removes|reduces).+Chain Multiplier Limit/i 
+    },
+    
+    {
+        name: 'Chain Coefficient Reduction reducer',
+        target: 'support',
+        matcher: /(removes|reduces).+Chain Coefficient Reduction/i 
     },
     
     {

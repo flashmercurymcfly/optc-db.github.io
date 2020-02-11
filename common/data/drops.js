@@ -1913,6 +1913,15 @@ window.drops = {
         },
         
         {
+            name: 'Kizuna Clash! - Preparation Battle',
+            dropID: 'eventneo70',
+            thumb: 2833,
+            nakama: null,
+            gamewith: null,
+            'All Difficulties': [ 2833 ]
+        },
+        
+        {
             name: 'Chinjao Family!',
             dropID: 'event71',
             thumb: 1426,
@@ -3418,6 +3427,7 @@ window.drops = {
         
         {
             name: 'Showdown!! Shanks & Mihawk',
+            dropID: 'clash56',
             thumb: 2819,
             global: true,
             nakama: 4281900,
@@ -3425,6 +3435,16 @@ window.drops = {
             Master: [ 2818 ],
             Expert: [ 2818 ],
             Ultimate: [ 2818 ],
+        },
+        
+        {
+            name: 'Clash!! Bonney',
+            dropID: 'clash57',
+            thumb: 2846,
+            nakama: null,
+            gamewith: null,
+            Expert: [ 2846 ],
+            Ultimate: [ 2846 ],
         },
         
         {
@@ -4454,6 +4474,16 @@ window.drops = {
         },
 
         {
+            name: 'Sangoro',
+            thumb: 2845,
+            showManual: true,
+            nakama: null,
+            gamewith: null,
+            slefty: 'coliseums',
+            Chaos: [ 2844, -2845 ],
+        },
+
+        {
             name: 'Coliseum EX Vs. Coby',
             thumb: 3372,
             showManual: true,
@@ -4703,7 +4733,7 @@ window.drops = {
             thumb: 2659,
             nakama: null,
             gamewith: 162014,
-            'Expo Sea': [ 2658, 2660 ]
+            'Sea Near the Pirate Expo': [ 2658, 2660 ]
         },
 
         {
@@ -4749,6 +4779,15 @@ window.drops = {
             nakama: null,
             gamewith: null,
             'Raging Sea': [ 2823 ]
+        },
+
+        {
+            name: 'Rebecca & Viola',
+            dropID: 'treasuremap30',
+            thumb: 2850,
+            nakama: null,
+            gamewith: null,
+            'Raging Sea': [ 2850 ]
         },
         
     ],
@@ -4878,6 +4917,15 @@ window.drops = {
             nakama: null,
             gamewith: 148537,
             'All Difficulties': [ 2811 ],
+        },
+        
+        {
+            name: 'Marco & Ace',
+            dropID: 'bond6',
+            thumb: 2831,
+            nakama: null,
+            gamewith: null,
+            'All Difficulties': [ 2831 ],
         },
         
     ],
@@ -5464,6 +5512,23 @@ window.drops = {
             nakama: null,
             gamewith: null,
             condition: "Chance to drop Limit Break Material for O-Tama (ID: 2815)",
+        },
+        
+        {
+            name: 'Anniversary Party',
+            thumb: 2843,
+            nakama: null,
+            gamewith: null,
+            condition: "Complete Missions to get Bingo",
+            'All Difficulties': [ 2842 ],
+        },
+
+        {
+            name: 'World Journey Mission',
+            thumb: 2825,
+            nakama: null,
+            condition: 'Mihawk: Slasher or Cerebral only. Hancock: Shooter or Free Spirit only. Crocodile: Striker or Driven only',
+            gamewith: 183779,
         },
         
         {

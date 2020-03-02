@@ -1917,7 +1917,7 @@ window.drops = {
             dropID: 'eventneo70',
             thumb: 2833,
             nakama: null,
-            gamewith: null,
+            gamewith: 186699,
             'All Difficulties': [ 2833 ]
         },
         
@@ -2498,21 +2498,23 @@ window.drops = {
         },
         
         {
-            name: 'Impel Down Breakout',
+            name: 'Escapees, Join the Fight!',
             dropID: 'event125',
+            global: true,
             thumb: 2692,
             nakama: 2269200,
             gamewith: 167197,
-            'All Difficulties': [ 2691, 2693, 2694, -2609, -2605, -2563, -2561, -2534, -2487, -2121, -2115, -2050 ]
+            'All Difficulties': [ 2691, 2693, 2694, -2609, -2605, -2563, -2561, -2534, -2487, -2121, -2115, -2119, -2050 ]
         },
         
         {
-            name: 'Thinking about Pops',
+            name: 'Remembering Pops',
             dropID: 'event126',
+            global: true,
             thumb: 2723,
             nakama: 2272300,
             gamewith: 171113,
-            'All Difficulties': [ 2722, 2724, -2607, -2577, -2575, -2567, -2346, -2119, -2117, -2027, -1794, -2005, -2565 ]
+            'All Difficulties': [ 2722, 2724, -2607, -2577, -2575, -2567, -2346, -2119, -2117, -2027, -1794, -1906, -2565 ]
         },
         
         {
@@ -3374,6 +3376,7 @@ window.drops = {
         {
             name: 'Showdown!! Crocodile',
             dropID: 'clash51',
+            global: true,
             thumb: 2698,
             nakama: 4269800,
             gamewith: 168159,
@@ -3385,6 +3388,7 @@ window.drops = {
         {
             name: 'Fight, Zorojuro',
             dropID: 'clash52',
+            global: true,
             thumb: 2707,
             nakama: 4270700,
             gamewith: 168824,
@@ -3393,8 +3397,9 @@ window.drops = {
         },
         
         {
-            name: 'Clash!! Law',
+            name: 'Those Who Gather in Wano: Trafalgar Law',
             dropID: 'clash53',
+            global: true,
             thumb: 2709,
             nakama: 4270900,
             gamewith: 168822,
@@ -3408,7 +3413,7 @@ window.drops = {
             dropID: 'clash54',
             thumb: 2781,
             nakama: null,
-            gamewith: null,
+            gamewith: 178033,
             Master: [ 2781 ],
             Expert: [ 2781 ],
             Ultimate: [ 2781 ],
@@ -3419,7 +3424,7 @@ window.drops = {
             dropID: 'clash55',
             thumb: 2795,
             nakama: null,
-            gamewith: null,
+            gamewith: 180268,
             Master: [ 2795 ],
             Expert: [ 2795 ],
             Ultimate: [ 2795 ],
@@ -3431,7 +3436,7 @@ window.drops = {
             thumb: 2819,
             global: true,
             nakama: 4281900,
-            gamewith: null,
+            gamewith: 182533,
             Master: [ 2818 ],
             Expert: [ 2818 ],
             Ultimate: [ 2818 ],
@@ -3442,9 +3447,18 @@ window.drops = {
             dropID: 'clash57',
             thumb: 2846,
             nakama: null,
-            gamewith: null,
+            gamewith: 185672,
             Expert: [ 2846 ],
             Ultimate: [ 2846 ],
+        },
+        
+        {
+            name: 'Attack!? Buggy Pirates',
+            dropID: 'clash58',
+            thumb: 2867,
+            nakama: null,
+            gamewith: null,
+            'All Difficulties': [ 2867 ]
         },
         
         {
@@ -3691,6 +3705,18 @@ window.drops = {
             Chaos: [ 1017, -1018 ],
             Underground: [ 1017, -1018 ],
             Exebition: [ 1017, -1018 ],
+        },
+
+
+        {
+            name: 'Exiled Spore Man',
+            thumb: 1087,
+            showManual: true,
+            global: true,
+            nakama: 5108601,
+            gamewith: 30801,
+            slefty: 'coliseums',
+            Chaos: [ 1086, -1087 ],
         },
 
         {
@@ -4424,7 +4450,7 @@ window.drops = {
         },
 
         {
-            name: 'Trafalgar Law',
+            name: 'Surgeon of Death\'s Operation',
             thumb: 2649,
             showManual: true,
             nakama: null,
@@ -4468,7 +4494,7 @@ window.drops = {
             thumb: 2813,
             showManual: true,
             nakama: null,
-            gamewith: null,
+            gamewith: 181684,
             slefty: 'coliseums',
             Chaos: [ 2813, -2813 ],
         },
@@ -4478,7 +4504,7 @@ window.drops = {
             thumb: 2845,
             showManual: true,
             nakama: null,
-            gamewith: null,
+            gamewith: 185012,
             slefty: 'coliseums',
             Chaos: [ 2844, -2845 ],
         },
@@ -4759,7 +4785,7 @@ window.drops = {
             dropID: 'treasuremap27',
             thumb: 2763,
             nakama: null,
-            gamewith: null,
+            gamewith: 175499,
             'Raging Sea': [ 2762 ]
         },
 
@@ -4768,7 +4794,7 @@ window.drops = {
             dropID: 'treasuremap28',
             thumb: 2792,
             nakama: null,
-            gamewith: null,
+            gamewith: 179702,
             'Raging Sea': [ 2791 ]
         },
 
@@ -4777,7 +4803,7 @@ window.drops = {
             dropID: 'treasuremap29',
             thumb: 2823,
             nakama: null,
-            gamewith: null,
+            gamewith: 182929,
             'Raging Sea': [ 2823 ]
         },
 
@@ -4786,7 +4812,7 @@ window.drops = {
             dropID: 'treasuremap30',
             thumb: 2850,
             nakama: null,
-            gamewith: null,
+            gamewith: 186492,
             'Raging Sea': [ 2850 ]
         },
         
@@ -4924,8 +4950,9 @@ window.drops = {
             dropID: 'bond6',
             thumb: 2831,
             nakama: null,
-            gamewith: null,
+            gamewith: 148537,
             'All Difficulties': [ 2831 ],
+            'Round 2': [ 2854 ],
         },
         
     ],
@@ -5019,6 +5046,15 @@ window.drops = {
             gamewith: 88896,
             'Sanji': [ 1960, 83, 94, 266, 1180, 81, 87, 92, 98, 113 ],
             'Pudding': [ 1962, 83, 94, 266, 1180, 82, 88, 93, 99, 114 ],
+        },
+        
+        {
+            name: 'Kizuna Clash! - Preparation Battle',
+            thumb: 2833,
+            nakama: null,
+            gamewith: [ 183973, 186699 ],
+            'Round 1': [ 2833 ],
+            'Round 2': [ 2852 ]
         },
 
         {
@@ -5441,6 +5477,16 @@ window.drops = {
         },
         
         {
+            name: 'The Great Pirate\'s Legacy',
+            thumb: 3379,
+            global: true,
+            nakama: null,
+            gamewith: null,
+            showManual: true,
+            'All Difficulties': [ 9035, -261, -1413, -2686, -3379 ],
+        },
+        
+        {
             name: 'Escape! Whole Cake Island',
             thumb: 2234,
             global: true,
@@ -5501,7 +5547,7 @@ window.drops = {
             name: 'Today is the Best Day of My Life!',
             thumb: 2816,
             nakama: null,
-            gamewith: null,
+            gamewith: 182349,
             showManual: true,
             'All Difficulties': [ 2815, -2815 ],
         },
@@ -5510,7 +5556,7 @@ window.drops = {
             name: 'O-Tama\'s Full Stomach Plan',
             thumb: 2815,
             nakama: null,
-            gamewith: null,
+            gamewith: 182349,
             condition: "Chance to drop Limit Break Material for O-Tama (ID: 2815)",
         },
         
@@ -5518,7 +5564,7 @@ window.drops = {
             name: 'Anniversary Party',
             thumb: 2843,
             nakama: null,
-            gamewith: null,
+            gamewith: 184761,
             condition: "Complete Missions to get Bingo",
             'All Difficulties': [ 2842 ],
         },
@@ -5529,6 +5575,13 @@ window.drops = {
             nakama: null,
             condition: 'Mihawk: Slasher or Cerebral only. Hancock: Shooter or Free Spirit only. Crocodile: Striker or Driven only',
             gamewith: 183779,
+        },
+        
+        {
+            name: 'Sweet Party!',
+            thumb: 2857,
+            gamewith: 187864,
+            'Chopperman Missions': [ 2855 ],
         },
         
         {

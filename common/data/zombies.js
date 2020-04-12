@@ -870,9 +870,28 @@ window.zombies = {
         type: 'healer',
         multiplier: 5
     },
+    2890: { // Moria
+        type: 'healer',
+        multiplier: 5
+    },
+    2911: { // Camie
+        type: 'healer',
+        multiplier: 5
+    },
+    2913: { // Shirahoshi
+        type: 'healer',
+    },
+    2915: { // Rebecca
+        type: 'healer',
+        multiplier: 5
+    },
     3376: {//Hera
         type: 'healer',
         multiplier: 1
+    },
+    3380: { // Condoriano
+        type: 'healer',
+        amount: 401
     },
     5001: { // Smoker/Tashigi
         type: 'healer',

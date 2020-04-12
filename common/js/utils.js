@@ -20,13 +20,25 @@
         if (element[15] && element[15].constructor != Array)
             element[15] = [element[15], element[15], element[15]];
         var limitHealth = element[12], limitAttack = element[13], limitRecovery = element[14], limitCooldown = 0, limitSlots = element[6];
+        var limitexHealth = element[12], limitexAttack = element[13], limitexRecovery = element[14], limitexCooldown = 0, limitexSlots = element[6];
+        var keylevel = 0;
         if (window.details) if(window.details[n + 1]) if(window.details[n + 1].limit){
+            keylevel = Object.keys(window.details[n + 1].limit).length;
+            for(var x in window.details[n + 1].limit) if (window.details[n + 1].limit[x].description.includes("LOCKED WITH KEY")) keylevel = x;
+            //console.log(keylevel, n+1);
             for(var x in window.details[n + 1].limit){
-                if (window.details[n + 1].limit[x].description.includes("Boosts base HP by ")) limitHealth += parseInt(window.details[n + 1].limit[x].description.substring(18), 10);
-                if (window.details[n + 1].limit[x].description.includes("Boosts base ATK by ")) limitAttack += parseInt(window.details[n + 1].limit[x].description.substring(19), 10);
-                if (window.details[n + 1].limit[x].description.includes("Boosts base RCV by ")) limitRecovery += parseInt(window.details[n + 1].limit[x].description.substring(19), 10);
-                if (window.details[n + 1].limit[x].description.includes("Reduce base Special Cooldown by ")) limitCooldown += parseInt(window.details[n + 1].limit[x].description.substring(32, 33), 10);
-                if (window.details[n + 1].limit[x].description.includes("additional Socket slot")) limitSlots += parseInt(window.details[n + 1].limit[x].description.substring(8, 9), 10);
+                if (parseInt(x) < keylevel){
+                    if (window.details[n + 1].limit[x].description.includes("Boosts base HP by ")) limitHealth += parseInt(window.details[n + 1].limit[x].description.substring(18), 10);
+                    if (window.details[n + 1].limit[x].description.includes("Boosts base ATK by ")) limitAttack += parseInt(window.details[n + 1].limit[x].description.substring(19), 10);
+                    if (window.details[n + 1].limit[x].description.includes("Boosts base RCV by ")) limitRecovery += parseInt(window.details[n + 1].limit[x].description.substring(19), 10);
+                    if (window.details[n + 1].limit[x].description.includes("Reduce base Special Cooldown by ")) limitCooldown += parseInt(window.details[n + 1].limit[x].description.substring(32, 33), 10);
+                    if (window.details[n + 1].limit[x].description.includes("additional Socket slot")) limitSlots += parseInt(window.details[n + 1].limit[x].description.substring(8, 9), 10);
+                }
+                if (window.details[n + 1].limit[x].description.includes("Boosts base HP by ")) limitexHealth += parseInt(window.details[n + 1].limit[x].description.substring(18), 10);
+                if (window.details[n + 1].limit[x].description.includes("Boosts base ATK by ")) limitexAttack += parseInt(window.details[n + 1].limit[x].description.substring(19), 10);
+                if (window.details[n + 1].limit[x].description.includes("Boosts base RCV by ")) limitexRecovery += parseInt(window.details[n + 1].limit[x].description.substring(19), 10);
+                if (window.details[n + 1].limit[x].description.includes("Reduce base Special Cooldown by ")) limitexCooldown += parseInt(window.details[n + 1].limit[x].description.substring(32, 33), 10);
+                if (window.details[n + 1].limit[x].description.includes("additional Socket slot")) limitexSlots += parseInt(window.details[n + 1].limit[x].description.substring(8, 9), 10);
             }
         }
         var result = {
@@ -40,6 +52,9 @@
             maxRCV: element[14], limitHP: limitHealth, 
             limitATK: limitAttack, limitRCV: limitRecovery,
             limitSlot: limitSlots, limitCD: limitCooldown,
+            limitexHP: limitexHealth, 
+            limitexATK: limitexAttack, limitexRCV: limitexRecovery,
+            limitexSlot: limitexSlots, limitexCD: limitexCooldown,
             growth: {
                 hp: element[15] ? element[15][0] : 0,
                 atk: element[15] ? element[15][1] : 0,
@@ -219,7 +234,7 @@
             case '3376': return '../res/character_10864_t.png'; break;
             case '3377': return '../res/character_11221_t1.png'; break;
             case '3378': return '../res/character_11199_t1.png'; break;
-            case '3379': return '../res/character_11173_t1.png'; break;
+            case '2909': return '../res/character_11173_t1.png'; break;
             //case '3370': return '../res/character_10891_t1.png'; break;
             //case '2440': return '../res/character_10643_t1.png'; break;
             //case '2441': return '../res/character_10644_t1.png'; break;
@@ -472,6 +487,14 @@
             case '5244': return '../res/character_11314_t1.png'; break;
             case '5245': return '../res/character_11315_t1.png'; break;
             case '5246': return '../res/character_11317_t1_int.png'; break;
+            case '5247': return '../res/character_11371_t1.png'; break;
+            case '5248': return '../res/character_11372_t1.png'; break;
+            case '5249': return '../res/character_11375_t1_str.png'; break;
+            case '5250': return '../res/character_11375_t1_psy.png'; break;
+            case '5251': return '../res/character_11373_t1.png'; break;
+            case '5252': return '../res/character_11374_t1.png'; break;
+            case '5253': return '../res/character_11376_t1_str.png'; break;
+            case '5254': return '../res/character_11376_t1_psy.png'; break;
             default: break;
         }
         return 'https://onepiece-treasurecruise.com/wp-content/uploads/f' + id + '.png';
@@ -562,7 +585,7 @@
             //case '2685': return 'https://onepiece-treasurecruise.com/en/wp-content/uploads/sites/2/c10686.png'; break;
             //case '2686': return 'https://onepiece-treasurecruise.com/en/wp-content/uploads/sites/2/c10687.png'; break;
             //case '2772': return 'https://onepiece-treasurecruise.com/en/wp-content/uploads/sites/2/character_10993.png'; break;
-            case '3370': return 'http://onepiece-treasurecruise.com/en/wp-content/uploads/sites/2/character_11102.png'; break;
+            case '3370': return 'http://onepiece-treasurecruise.com/en/wp-content/uploads/sites/2/character_11102-1.png'; break;
             case '3374': return 'http://onepiece-treasurecruise.com/en/wp-content/uploads/sites/2/character_11138.png'; break;
             default: break;
         }

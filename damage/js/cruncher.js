@@ -713,7 +713,7 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
     var applyChainAndBonusMultipliers = function(damage,modifiers,type) {
         
         var currentMax = -1, currentResult = null, addition = 0.0;
-        if(shipBonus.bonus.name=="Doflamingo Ship - Special ACTIVATED"){
+        if(shipBonus.bonus.name=="Donquixote Pirates Ship - Special ACTIVATED"){
             addition = 0.2
         }
 
@@ -1085,6 +1085,8 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
             // activate turn counter if necessary
             if (n < 2 && (id == 794 || id == 795 || id == 1124 || id == 1125 || id == 1191 || id == 1192 || id == 1219 || id == 1220 || id == 1288 || id == 1289 || id == 1361 || id == 1362 || id == 1525 || id == 1557 || id == 1558 || id == 1559 || id == 1560 || id == 1561 || id == 1562 || id == 1712 || id == 1713 || id == 1716 || id == 1764 || id == 1907 || id == 1908 || id == 2015 || id == 2049 || id == 2050 || id == 2198 || id ==2199 || id == 2214 || id == 2215 || id == 2299 || id == 2337 || id == 2338 || id == 2421 || id == 2422 || id == 2423 || id == 2424 || id == 2440 || id == 2441 || id == 5074 || id == 5534 || id == 5535 || id == 2669 || id == 2670 || id == 2683 || id == 2684))
                 $scope.tdata.turnCounter.enabled = true;
+            if(shipBonus.bonus.name=="Shark Superb")
+                $scope.tdata.turnCounter.enabled = true;
             if (n < 2 && (id == 1609 || id == 1610 || id == 2232))
                 $scope.tdata.healCounter.enabled = true;
             if (id == 2364 || id == 2365)
@@ -1347,6 +1349,7 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
                         healAmount += (id == 5084 || id == 5085 || id == 5088 || id == 5089) ? (1 * (data.team[i].rcv + rcvtemp) * rcvmulttemp * hitsCount['Perfect']) : 0;
                         healAmount += ((id == 2301 || id == 2302) && classCounter().Shooter == 6) ? (.5 * (data.team[i].rcv + rcvtemp) * rcvmulttemp * hitsCount['Perfect']) : 0;
                         healAmount += id == 2261 ? capActions[i] ? 1.75 * (data.team[i].rcv + rcvtemp) * rcvmulttemp : 1.5 * (data.team[i].rcv + rcvtemp) * rcvmulttemp : 0;
+                        healAmount += id == 2913 ? capActions[i] ? 2 * (data.team[i].rcv + rcvtemp) * rcvmulttemp : 0 : 0;
                         
                         healAmount = Math.floor(healAmount);
                     }

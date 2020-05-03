@@ -7,7 +7,7 @@
             <div class="modal-content animated rollIn">
 
                 <div class="modal-header">
-                    <div class="fa fa-arrow-left btn btn-default back-button" ng-if="withButton" ng-click="onBackClick()"></div>    
+                    <div class="btn btn-default back-button" ng-if="withButton" ng-click="onBackClick()"><i class="fas fa-arrow-left"></i></div>    
                     {{unit.name}}
                 </div>
 
@@ -155,6 +155,28 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        <div class="panel panel-default">
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Pirate Festival</th>
+                                        <th>Class</th>
+                                        <th>DEF</th>
+                                        <th>SPD</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td >{{unit.pirateFest.class | decorate}}</td>
+                                        <td ng-if="!compare">{{unit.pirateFest.DEF | number}}</td>
+                                        <td ng-if="compare" comparison="positive">{{unit.pirateFest.DEF - compare.pirateFest.DEF | number}}</td>
+                                        <td ng-if="!compare">{{unit.pirateFest.SPD | number}}</td>
+                                        <td ng-if="compare" comparison="positive">{{unit.pirateFest.SPD - compare.pirateFest.SPD | number}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         </uib-tab>
                         <uib-tab heading="Chart" ng-if="!unit.incomplete">
                             <canvas id="radar-chart" class="chart chart-radar" chart-data="radar.data"
@@ -245,6 +267,21 @@
                                         <span class="notes" ng-if="details.sailorNotes" ng-bind-html="details.sailorNotes | notes | decorate"></span>
                                     </td>
                                 </tr>
+                                <tr ng-if="details.swap">
+                                    <td>Swap</td>
+                                    <td>
+                                        <!-- same sailor ability -->
+                                        <div ng-if="!isSwapHybrid" ng-bind-html="details.swap | decorate"></div>
+                                        <!-- different sailor abilities -->
+                                        <div ng-if="isSwapHybrid">
+                                            <span class="badge badge-japan" ng-show="details.Swap.japan">Japan</span>
+                                            <div ng-show="details.Swap.japan" ng-bind-html="details.sailor.japan | decorate"></div>
+                                            <span class="badge badge-global" ng-show="details.Swap.global">Global</span>
+                                            <div ng-show="details.Swap.global" ng-bind-html="details.Swap.global | decorate"></div>
+                                        </div>
+                                        <span class="notes" ng-if="details.swapNotes" ng-bind-html="details.swapNotes | notes | decorate"></span>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>Special</td>
                                     <td>
@@ -275,21 +312,6 @@
                                         <span class="notes" ng-if="details.specialNotes" ng-bind-html="details.specialNotes | notes | decorate"></span>
                                     </td>
                                 </tr>
-                                <tr ng-if="details.swap">
-                                    <td>Swap</td>
-                                    <td>
-                                        <!-- same sailor ability -->
-                                        <div ng-if="!isSwapHybrid" ng-bind-html="details.swap | decorate"></div>
-                                        <!-- different sailor abilities -->
-                                        <div ng-if="isSwapHybrid">
-                                            <span class="badge badge-japan" ng-show="details.Swap.japan">Japan</span>
-                                            <div ng-show="details.Swap.japan" ng-bind-html="details.sailor.japan | decorate"></div>
-                                            <span class="badge badge-global" ng-show="details.Swap.global">Global</span>
-                                            <div ng-show="details.Swap.global" ng-bind-html="details.Swap.global | decorate"></div>
-                                        </div>
-                                        <span class="notes" ng-if="details.swapNotes" ng-bind-html="details.swapNotes | notes | decorate"></span>
-                                    </td>
-                                </tr>
                                 <tr ng-if="cooldown && !isSpecialStaged && !isCooldownHybrid">
                                     <td>Cooldown<span ng-if="unit.limitCD != 0"><br>Cooldown w/ LB</span><span ng-if="unit.limitexCD != 0 && unit.limitCD != unit.limitexCD"><br>Cooldown w/ LB expansion</span></td>
                                     <td>
@@ -313,6 +335,45 @@
                                         {{cooldown[1].length ? ' \u2192 ' + cooldown[1][1] + ' turns' : ''}}<span ng-if="unit.limitCD != 0"><br>
                                         {{cooldown[1].length ? (cooldown[1][0] - unit.limitCD) : (cooldown[1] - unit.limitCD)}} turns
                                         {{cooldown[1].length ? ' \u2192 ' + (cooldown[1][1] - unit.limitCD) + ' turns' : ''}}</span>
+                                    </td>
+                                </tr>
+                                <tr ng-if="details.superSpecialCriteria">
+                                    <td>Super Special Criteria</td>
+                                    <td>
+                                        <div>
+                                                <span ng-bind-html="details.superSpecialCriteria | decorate"></span></div>
+                                        </div>
+                                        <span class="notes" ng-if="details.superSpecialCriteriaNotes" ng-bind-html="details.superSpecialCriteriaNotes | notes | decorate"></span>
+                                    </td>
+                                </tr>
+                                <tr ng-if="details.superSpecial">
+                                    <td>Super Special</td>
+                                    <td>
+                                        <strong class="specialName" ng-if="details.superSpecialName">{{details.superSpecialName}}</strong>
+                                        <!-- same special, no stages -->
+                                        <div ng-if="!isSuperSpecialHybrid && !isSuperSpecialStaged" ng-bind-html="details.superSpecial | decorate"></div>
+                                        <!-- same special, with stages -->
+                                        <div ng-if="!isSuperSpecialHybrid && isSuperSpecialStaged">
+                                            <div ng-repeat="stage in details.superSpecial track by $index">
+                                                <strong>Stage {{$index + 1}}</strong>
+                                                ({{stage.cooldown.length ? stage.cooldown[0] : stage.cooldown}}{{stage.cooldown.length ? ' \u2192 ' + stage.cooldown[1] : ''}} turns) <span ng-if="unit.limitCD != 0"><strong>➤</strong>
+                                                ({{stage.cooldown.length ? stage.cooldown[0] - unit.limitCD : stage.cooldown}}{{stage.cooldown.length ? ' \u2192 ' + (stage.cooldown[1] - unit.limitCD) : ''}} turns):</span><span ng-if="unit.limitexCD != 0 && unit.limitexCD != unit.limitCD"><strong>➤</strong>
+                                                ({{stage.cooldown.length ? stage.cooldown[0] - unit.limitexCD : stage.cooldown}}{{stage.cooldown.length ? ' \u2192 ' + (stage.cooldown[1] - unit.limitexCD) : ''}} turns):</span>
+                                                <span ng-bind-html="stage.description | decorate"></span>
+                                            </div>
+                                        </div>
+                                        <!-- different specials -->
+                                        <div ng-if="isSuperSpecialHybrid">
+                                            <span class="badge badge-japan" ng-show="details.superSpecial.japan">Japan</span>
+                                            <div ng-show="details.superSpecial.japan" ng-bind-html="details.superSpecial.japan | decorate"></div>
+                                            <span class="badge badge-global" ng-show="details.superSpecial.global">Global</span>
+                                            <div ng-show="details.superSpecial.global" ng-bind-html="details.superSpecial.global | decorate"></div>
+                                            <span class="badge badge-character1" ng-show="details.superSpecial.character1">Character 1 Special Ability</span>
+                                            <div ng-show="details.superSpecial.character1" ng-bind-html="details.superSpecial.character1 | decorate"></div>
+                                            <span class="badge badge-character2" ng-show="details.superSpecial.character2">Character 2 Special Ability</span>
+                                            <div ng-show="details.superSpecial.character2" ng-bind-html="details.superSpecial.character2 | decorate"></div>
+                                        </div>
+                                        <span class="notes" ng-if="details.superSpecialNotes" ng-bind-html="details.superSpecialNotes | notes | decorate"></span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -353,11 +414,18 @@
                                                 <strong>Potential Ability {{$index + 1}}:</strong>
                                                  {{stage.Name}}
                                                 <br>
+                                                <div ng-repeat="item in stage.description track by $index"><strong>Level {{$index + 1}}:</strong>
+                                                <span ng-bind-html="item | decorate"></span><br></div>
+                                                <!--strong>Level {{$index + 1}}:</strong>
                                                 <span ng-bind-html="stage.description[0] | decorate"></span><br>
+                                                <strong>Level {{$index + 1}}:</strong>
                                                 <span ng-bind-html="stage.description[1] | decorate"></span><br>
+                                                <strong>Level {{$index + 1}}:</strong>
                                                 <span ng-bind-html="stage.description[2] | decorate"></span><br>
+                                                <strong>Level {{$index + 1}}:</strong>
                                                 <span ng-bind-html="stage.description[3] | decorate"></span><br>
-                                                <span ng-bind-html="stage.description[4] | decorate"></span><br>
+                                                <strong>Level {{$index + 1}}:</strong>
+                                                <span ng-bind-html="stage.description[4] | decorate"></span><br-->
                                             </div>
                                         </div>
                                         <div ng-if="isPotentialHybrid">
@@ -388,11 +456,8 @@
                                                 <strong>Supported Characters:</strong>
                                                  {{stage.Characters}}
                                                 <br>
-                                                <span ng-bind-html="stage.description[0] | decorate"></span><br>
-                                                <span ng-bind-html="stage.description[1] | decorate"></span><br>
-                                                <span ng-bind-html="stage.description[2] | decorate"></span><br>
-                                                <span ng-bind-html="stage.description[3] | decorate"></span><br>
-                                                <span ng-bind-html="stage.description[4] | decorate"></span><br>
+                                                <div ng-repeat="item in stage.description track by $index"><strong>Level {{$index + 1}}:</strong>
+                                                <span ng-bind-html="item | decorate"></span><br></div>
                                             </div>
                                         </div>
                                         <span class="notes" ng-if="details.supportNotes" ng-bind-html="details.supportNotes | notes | decorate"></span>
@@ -402,6 +467,57 @@
                                             <span class="badge badge-global">Global</span>
                                             <div ng-bind-html="details.potential.global | decorate"></div>
                                         </div>
+                                    </td>
+                                </tr>
+                            </tbody>                            
+                        </table>
+                    </div>
+                    <div class="panel panel-default" ng-hide="hidden.abilities" ng-if="details.festAbility">
+                        <table class="table table-striped-column abilities">
+                            <tbody>
+                                <tr ng-if="details.festAttackPattern">
+                                    <td>Pirate Festival Attack Pattern</td>
+                                    <td>
+                                        <span ng-repeat="item in details.festAttackPattern track by $index"><span ng-bind-html="item.description | decorate"></span>{{$index != details.festAttackPattern.length - 1 ? ' \u2192 ' : ''}}</span>
+                                        <span class="notes" ng-if="details.festAttackPatternNotes" ng-bind-html="details.festAttackPatternNotes | notes | decorate"></span>
+                                    </td>
+                                </tr>
+                                <tr ng-if="details.festAttackTarget">
+                                    <td>Pirate Festival Attack Target</td>
+                                    <td>
+                                        <div>
+                                                <span ng-bind-html="details.festAttackTarget | decorate"></span></div>
+                                        </div>
+                                        <span class="notes" ng-if="details.festAttackTargetNotes" ng-bind-html="details.festAttackTargetNotes | notes | decorate"></span>
+                                    </td>
+                                </tr>
+                                <tr ng-if="details.festResistance">
+                                    <td>Pirate Festival Resistance</td>
+                                    <td>
+                                        <div>
+                                                <span ng-bind-html="details.festResistance | decorate"></span></div>
+                                        </div>
+                                        <span class="notes" ng-if="details.festResistanceNotes" ng-bind-html="details.festResistanceNotes | notes | decorate"></span>
+                                    </td>
+                                </tr>
+                                <tr ng-if="details.festAbility">
+                                    <td>Pirate Festival Ability</td>
+                                    <td>
+                                        <div>
+                                                <div ng-repeat="item in details.festAbility track by $index"><strong>Level {{$index + 1}}:</strong>
+                                                <span ng-bind-html="item.description | decorate"></span><br></div>
+                                        </div>
+                                        <span class="notes" ng-if="details.festAbilityNotes" ng-bind-html="details.festAbilityNotes | notes | decorate"></span>
+                                    </td>
+                                </tr>
+                                <tr ng-if="details.festSpecial">
+                                    <td>Pirate Festival Special</td>
+                                    <td>
+                                        <div>
+                                                <div ng-repeat="item in details.festSpecial track by $index"><strong>Level {{$index + 1}}: [{{item.cooldown}} seconds] </strong>
+                                                <span ng-bind-html="item.description | decorate"></span><br></div>
+                                        </div>
+                                        <span class="notes" ng-if="details.festSpecialNotes" ng-bind-html="details.festSpecialNotes | notes | decorate"></span>
                                     </td>
                                 </tr>
                             </tbody>                            

@@ -432,20 +432,25 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
     /* * * * * * Basic operations * * * * */
 
     var getStatOfUnit = function(data,stat,slot) {
-        var atkbaseDamage = 0
+        var params = getParameters(slot);
+        var atkbaseDamage = 0;
+        var LBaddition = 0;
         var maxLevel = (data.unit.maxLevel == 1 ? 1 : data.unit.maxLevel -1);
         var growth = data.unit.growth[stat] || 1;
         var minStat = 'min' + stat.toUpperCase(), maxStat = 'max' + stat.toUpperCase();
         var result = data.unit[minStat] + (data.unit[maxStat] - data.unit[minStat]) * Math.pow((data.level-1) / maxLevel, growth);
         var candyBonus = (data.candies && data.candies[stat] ? data.candies[stat] * { hp: 5, atk: 2, rcv: 1 }[stat] : 0);
+        if(params.limit[slot] != null && params.limit[slot] != 0){
+            LBaddition = data.unit.limitStats[stat][Math.min(params.limit[slot]-1,data.unit.limitStats[stat].length-1)];
+            if(!LBaddition) LBaddition = 0;
+        }
         enabledSpecials.forEach(function(data) {
             if (data.hasOwnProperty('atkbase') && stat == "atk"){
-                var params = getParameters(slot);
                 params["sourceSlot"] = data.sourceSlot;
                 atkbaseDamage = data.atkbase(params);
             }
         });
-        return Math.floor(result) + candyBonus + atkbaseDamage;
+        return Math.floor(result) + candyBonus + atkbaseDamage + LBaddition;
     };
 
     /* The effective damage of a unit is affected by the hit modifier being used, by the defense threshold of the enemy
@@ -574,16 +579,16 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
     var getTypeMultiplierOfUnit = function(attackerType,attackedType, unit, teamSlot) {
         var typeMult = 1, affinityMult = 1, captAffinityMult = 1;
         
-        if (attackerType == 'STR' && attackedType == 'DEX') typeMult = 2;
-        if (attackerType == 'QCK' && attackedType == 'STR') typeMult = 2;
-        if (attackerType == 'DEX' && attackedType == 'QCK') typeMult = 2;
-        if (attackerType == 'INT' && attackedType == 'PSY') typeMult = 2;
-        if (attackerType == 'PSY' && attackedType == 'INT') typeMult = 2;
-        if (attackerType == 'STR' && attackedType == 'QCK') typeMult = 0.5;
-        if (attackerType == 'QCK' && attackedType == 'DEX') typeMult = 0.5;
-        if (attackerType == 'DEX' && attackedType == 'STR') typeMult = 0.5;
+        if (attackerType == 'STR' && attackedType == 'DEX') typeMult = getParameters(teamSlot).superType[teamSlot] ? 2.5 : 2;
+        if (attackerType == 'QCK' && attackedType == 'STR') typeMult = getParameters(teamSlot).superType[teamSlot] ? 2.5 : 2;
+        if (attackerType == 'DEX' && attackedType == 'QCK') typeMult = getParameters(teamSlot).superType[teamSlot] ? 2.5 : 2;
+        if (attackerType == 'INT' && attackedType == 'PSY') typeMult = getParameters(teamSlot).superType[teamSlot] ? 2.5 : 2;
+        if (attackerType == 'PSY' && attackedType == 'INT') typeMult = getParameters(teamSlot).superType[teamSlot] ? 2.5 : 2;
+        if (attackerType == 'STR' && attackedType == 'QCK') typeMult = getParameters(teamSlot).superType[teamSlot] ? 0.75 : 0.5;
+        if (attackerType == 'QCK' && attackedType == 'DEX') typeMult = getParameters(teamSlot).superType[teamSlot] ? 0.75 : 0.5;
+        if (attackerType == 'DEX' && attackedType == 'STR') typeMult = getParameters(teamSlot).superType[teamSlot] ? 0.75 : 0.5;
         
-        if ([2650, 2651, 2681].indexOf(unit.unit.number + 1) != -1 && teamSlot < 2) typeMult = 2;
+        if ([2650, 2651, 2681].indexOf(unit.unit.number + 1) != -1 && teamSlot < 2) typeMult = getParameters(teamSlot).superType[teamSlot] ? 2.5 : 2;
         
         //Get the strongest Color affinity Mult if it exists and apply it
         if (!$scope.data.effect || !effects[$scope.data.effect].hasOwnProperty('affinity')) {
@@ -604,11 +609,10 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
                     captAffinityMult *= captain.captAffinityMultiplier(params);
                 });
         
-        //console.log(affinityMult);
         //Calculate the new Affinity mult
         if(affinityMult != 1 || captAffinityMult != 1){
-            if(typeMult == 2) typeMult *= (affinityMult * captAffinityMult);
-            if(typeMult == 0.5) typeMult /= (affinityMult * captAffinityMult);
+            if(typeMult > 1) typeMult *= (affinityMult * captAffinityMult);
+            if(typeMult < 1) typeMult /= (affinityMult * captAffinityMult);
         }
         
         return typeMult;
@@ -1272,6 +1276,7 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
             data: team[slotNumber],
             tdata: $scope.tdata.team[slotNumber],
             scope: $scope,
+            team: team,
             slot: slotNumber,
             turnCounter: $scope.tdata.turnCounter.value,
             healCounter: $scope.tdata.healCounter.value,
@@ -1285,6 +1290,8 @@ var CruncherCtrl = function($scope, $rootScope, $timeout) {
             captain: team[1].unit,
             friendCaptain: team[0].unit,
             actions: [ $scope.data.actionleft, $scope.data.actionright ],
+            limit: [ $scope.data.limit0, $scope.data.limit1, $scope.data.limit2, $scope.data.limit3, $scope.data.limit4, $scope.data.limit5 ],
+            superType: [ $scope.data.superType0, $scope.data.superType1, $scope.data.superType2, $scope.data.superType3, $scope.data.superType4, $scope.data.superType5 ],
             gear: [ $scope.data.gearLevelLeft, $scope.data.gearLevelRight ],
             hitcombo: hitModifiers,
             effectName: $scope.data.effect,

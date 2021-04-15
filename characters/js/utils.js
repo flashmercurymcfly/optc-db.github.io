@@ -5,7 +5,7 @@ var CharUtils = { };
 /* * * * * Reverse drop map * * * * */
 
 var reverseDropMap = null;
-var marks = { 'Story Island': 1, 'Booster and Evolver Island': 2, 'Fortnight': 4, 'Raid': 8, 'Coliseum': 16, 'Treasure Map': 64, 'Ambush': 256, 'Kizuna Clash': 1024 };
+var marks = { 'Story Island': 1, 'Booster and Evolver Island': 2, 'Rookie Mission': 4, 'Fortnight': 8, 'Raid': 16, 'Coliseum': 64, 'Treasure Map': 256, 'Ambush': 1024, 'Kizuna Clash': 4096, 'Areana': 16384 };
 
 var generateReverseDropMap = function() {
     reverseDropMap = { };
@@ -18,6 +18,8 @@ var generateReverseDropMap = function() {
                     if (data[i] < 0 || CharUtils.isFarmable(data[i], type)) continue;
                     if (drops[type][island].name == 'Coliseum')
                         flagUnit(data[i], 'Coliseum');
+                    else if (drops[type][island].name == 'Arena')
+                        flagUnit(data[i], 'Arena');
                     else
                         flagUnit(data[i], type);
                 }
@@ -111,6 +113,10 @@ CharUtils.searchDropLocations = function(id) {
                 var name = window.drops[type][island].name;
                 if (type == 'Fortnight') name += ' Fortnight';
                 else if (type == 'Raid') name += ' Raid';
+                else if (type == 'Coliseum') name += ' Coliseum';
+                else if (type == 'Arena') name += ' Arena';
+                else if (type == 'Treasure Map') name += ' Treasure Map';
+                else if (type == 'Kizuna Clash') name += ' Kizuna';
                 var data = { name: name, thumb: window.drops[type][island].thumb, data: temp };
                 if (type == 'Story Island' || window.drops[type][island].hasOwnProperty('day'))
                     data.bonuses = CharUtils.getIslandBonuses(island, window.drops[type][island].day);
@@ -288,10 +294,20 @@ CharUtils.hasFarmableSocket = function(id) {
     if (unit.slots<1) return farmableSocket;
     
     window.families.forEach(function(family,n){
-       if (ownFamily == family) {
-           var famId = n+1;
-           if(CharUtils.isFarmable(famId) || CharUtils.isFarmable(Utils.searchBaseForms(famId))) farmableSocket = true;
-       }
+        if (Array.isArray(family)){
+            family.forEach(function(duo,n){
+                if (ownFamily == duo) {
+                    var famId = n+1;
+                    if(CharUtils.isFarmable(famId) || CharUtils.isFarmable(Utils.searchBaseForms(famId))) farmableSocket = true;
+                }
+            })
+        }
+        else{
+            if (ownFamily == family) {
+                var famId = n+1;
+                if(CharUtils.isFarmable(famId) || CharUtils.isFarmable(Utils.searchBaseForms(famId))) farmableSocket = true;
+            }
+        }
     });
     
     return farmableSocket;

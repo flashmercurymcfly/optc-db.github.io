@@ -85,6 +85,7 @@ var SharedRootCtrl = function($scope, $rootScope, $timeout) {
         meatOrbsEnabled: 0,
         wanoOrbsEnabled: 0,
         emptyOrbsEnabled: 0,
+        superBombOrbsEnabled: 0,
         slidersEnabled: true,
         sidebarVisible: false,
         transientMode: false,
@@ -95,6 +96,8 @@ var SharedRootCtrl = function($scope, $rootScope, $timeout) {
         // toggle special if active so deactivation methods run
         if ($scope.tdata.team[n].special)
             $rootScope.$emit('specialToggled', n, false);
+        if ($scope.tdata.team[n].altspecial)
+            $rootScope.$emit('altspecialToggled', n, false);
         // toggle events if any
         if ($scope.data.team[n].unit) {
             var uid = $scope.data.team[n].unit.number + 1;
@@ -401,6 +404,35 @@ var SharedRootCtrl = function($scope, $rootScope, $timeout) {
         if ($rootScope.data.effect) {
             var effect = window.effects[$rootScope.data.effect];
             if (effect && effect.emptyOrbsEnabled) return true;
+        }
+        return false;
+    };
+
+    /* * * * * [SUPERBOMB] orb control * * * * */
+
+    var resetSuperBombOrbs = function() {
+        for (var i=0;i<6;++i) {
+            if ($scope.tdata.team[i].orb == 'superbomb')
+                $scope.tdata.team[i].orb = 1;
+        }
+    };
+
+    // reset empty slots automatically
+    $scope.$watch('options.superBombOrbsEnabled',function() {
+        if (!$rootScope.areSuperBombOrbsEnabled())
+            resetSuperBombOrbs();
+    });
+
+    $scope.$watch('data.effect',function() {
+        if (!$rootScope.areSuperBombOrbsEnabled())
+            resetSuperBombOrbs();
+    });
+
+    $rootScope.areSuperBombOrbsEnabled = function() {
+        if ($rootScope.options.superBombOrbsEnabled > 0) return true;
+        if ($rootScope.data.effect) {
+            var effect = window.effects[$rootScope.data.effect];
+            if (effect && effect.superBombOrbsEnabled) return true;
         }
         return false;
     };

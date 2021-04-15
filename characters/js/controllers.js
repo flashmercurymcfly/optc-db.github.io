@@ -6,6 +6,23 @@
 
 var filters = { custom: [ ], classes: [ ], types: [ ], stars: [ ], cost: [ 1, 99 ], toggle: true, typeEnabled: false, characterEnabled: false, classEnabled: false, dropEnabled: false, supportEnabled: false, limitEnabled: false, sailorEnabled: false, swapEnabled: false, specialEnabled: false, captainEnabled: false, temporaryEnabled: false, specCaptEnabled: false, tmkcEnabled: false, exclusionEnabled: false, costEnabled: false, rarityEnabled: false, farmEnabled: false, nonfarmEnabled: false };
 
+function denormalizeEffects(ability) {
+  let lastEffect = [];
+  let mergedEffect = [];
+  ability.forEach((ability, abilityIdx) => {
+    mergedEffect = [...lastEffect];
+    ability.effects.forEach((effect, effectIdx) => {
+      if(effect.effect) {
+        lastEffect[effectIdx] = effect;
+        mergedEffect[effectIdx] = effect;
+      } else if (effect.override){
+        mergedEffect[effectIdx] = {...lastEffect[effectIdx], ...effect.override};
+      }
+    });
+    ability.effects = mergedEffect;
+  });
+}
+
 /***************
  * Controllers *
  ***************/
@@ -18,7 +35,6 @@ app.controller('MainCtrl',function($scope, $rootScope, $state, $stateParams, $ti
     //Change Default Chart Colors
     Chart.defaults.global.colours = ["#0e91d3", "#F7464A", "#4D5360", "#97BBCD", "#F7464A", "#4D5360", "#4D5360"];
     colors = colors.splice(2,0,colors.splice(1,1)[0]);
-    
 
     if (!$rootScope.hasOwnProperty('nightMode')) {
         $rootScope.nightMode = $storage.get('chars.night', false);
@@ -34,7 +50,7 @@ app.controller('MainCtrl',function($scope, $rootScope, $state, $stateParams, $ti
     });
 
     $controller('DismissalCtrl');
-    
+
     $scope.getRandChar = function(){
         var range = parseInt($rootScope.table.data.length) + 1;
         return $rootScope.table.data[Math.floor(Math.random() * range)][0];
@@ -123,7 +139,16 @@ app.controller('SidebarCtrl',function($scope, $rootScope, $stateParams, $timeout
 
 });
 
-app.controller('DetailsCtrl',function($scope, $rootScope, $state, $stateParams, $timeout, $storage) {
+app.controller('DetailsCtrl',function($scope, $rootScope, $state, $stateParams, $timeout, $storage, $http) {
+
+    var rumbleRequest = {
+      method: 'get',
+      url: '../common/data/rumble.json',
+      dataType: 'json',
+      contentType: "application/json"
+    };
+
+    $scope.rumble = {};
 
     // data
     var id = parseInt($stateParams.id, 10);
@@ -135,7 +160,43 @@ app.controller('DetailsCtrl',function($scope, $rootScope, $state, $stateParams, 
     $scope.cooldown = window.cooldowns[id - 1];
     $scope.evolution = window.evolutions[id];
     $scope.family = window.families[id - 1];
+    $http(rumbleRequest)
+        .success(function (jsonData) {
+            var key = id;
+            $scope.rumble = jsonData.units.filter(unit =>{
+                return Math.floor(unit.id) == key;
+              })[0];
+            if ( $scope.rumble.basedOn ) {
+              key = $scope.rumble.basedOn
+              $scope.rumble = jsonData.units.filter(unit => unit.id == key)[0];
+            }
+            if ($scope.rumble === undefined ) {
+              console.log("Couldn't find unit with id " + id);
+              $scope.rumble={};
+            }
+            // normalize the data here:
+            denormalizeEffects($scope.rumble.ability);
+            denormalizeEffects($scope.rumble.special);
+
+            // Check for VS unit
+            if ( $scope.rumble.id != Math.floor($scope.rumble.id) ) {
+              key = Math.floor(key);
+              $scope.rumble2 = jsonData.units.filter(unit =>{
+                  return Math.floor(unit.id) == key;
+                })[1];
+              if ($scope.rumble === undefined ) {
+                console.log("Couldn't find unit with id " + id);
+                $scope.rumble2={};
+              }
+              denormalizeEffects($scope.rumble2.ability);
+              denormalizeEffects($scope.rumble2.special);
+            }
+        })
+        .error(function (out) {
+          console.log( "Failure in loading or parsing json" + out);
+        });
     $scope.customLevel = { };
+    $scope.isArray = Array.isArray;
 
     // derived data
     var evolvesFrom = Utils.searchBaseForms(id);
@@ -149,47 +210,128 @@ app.controller('DetailsCtrl',function($scope, $rootScope, $state, $stateParams, 
     $scope.tandems = CharUtils.searchTandems(id);
     $scope.manuals = CharUtils.searchDropLocations(-id);
     $scope.sameSpecials = CharUtils.searchSameSpecials(id);
-    $scope.collapsed = { to: true, from: true, used: true, drops: true, manuals: true, families: true }; 
+    $scope.collapsed = { to: true, from: true, used: true, drops: true, manuals: true, families: true };
+
+    if (Array.isArray($scope.family)){
+        var tempName = "";
+        $scope.family.forEach(function(name){
+            tempName += name + " & ";
+        });
+        tempName = tempName.substring(0, tempName.length - 3);
+        $scope.displayfamily = tempName;
+    }
+    else{
+        $scope.displayfamily = window.families[id - 1];
+    }
 
     $scope.families = [ ];
     if ($scope.family) {
-        window.families.forEach(function(family,n) {
-            if (Array.isArray(family)){
-                
-            }
-            if (family != $scope.family || n+1 == $scope.id) return;
-            var id = n +1;
-            if (!CharUtils.isFarmable(id) || Utils.searchBaseForms(id)) return;
-            var name = units[id - 1].name;
-            if (name.length  > 25) name = name.slice(0,22) + '...';
-            CharUtils.searchDropLocations(id).forEach(function(location) {
-                $scope.families.push({
-                    uid: n + 1,
-                    name: name,
-                    location: location
+        if (Array.isArray($scope.family)){
+            $scope.family.forEach(function(scopefam){
+                window.families.forEach(function(family,n) {
+                if (Array.isArray(family)){
+                    family.forEach(function(duo){
+                        if (duo != scopefam || n+1 == $scope.id) return;
+                        var id = n+1;
+                        if (!CharUtils.isFarmable(id) || Utils.searchBaseForms(id)) return;
+                        var name = units[id - 1].name;
+                        if (name.length  > 25) name = name.slice(0,22) + '...';
+                        CharUtils.searchDropLocations(id).forEach(function(location) {
+                            $scope.families.push({
+                                uid: n + 1,
+                                name: name,
+                                location: location
+                            });
+                        });
+                    });
+                }
+                if (family != scopefam || n+1 == $scope.id) return;
+                var id = n +1;
+                if (!CharUtils.isFarmable(id) || Utils.searchBaseForms(id)) return;
+                var name = units[id - 1].name;
+                if (name.length  > 25) name = name.slice(0,22) + '...';
+                CharUtils.searchDropLocations(id).forEach(function(location) {
+                    $scope.families.push({
+                        uid: n + 1,
+                        name: name,
+                        location: location
+                    });
                 });
+
+                //Super Hack Job to show Karoo as a socket for Vivi
+                if (family == "Nefertari Vivi"){
+                    if (!$scope.families.filter(function(e) { return e.uid == 445; }).length>0){
+                        $scope.families.push({
+                            uid: 445,
+                            name: units[444].name,
+                            location:  {data: ["All Difficulties"], name: "Supersonic Duck Squadron! Fortnight", thumb:445}
+                        });
+                    }
+                }
+                if (family == "Demalo Black"){
+                    if (!$scope.families.filter(function(e) { return e.uid == 985; }).length>0){
+                        $scope.families.push({
+                            uid: 985,
+                            name: units[985].name,
+                            location:  {data: ["Ultimate"], name: "Clash!? Impostor Straw Hat Pirates", thumb:989}
+                        });
+                    }
+                }
             });
-            
-            //Super Hack Job to show Karoo as a socket for Vivi
-            if (family == "Nefertari Vivi"){
-                if (!$scope.families.filter(function(e) { return e.uid == 445; }).length>0){
-                    $scope.families.push({
-                        uid: 445,
-                        name: units[444].name,
-                        location:  {data: ["All Difficulties"], name: "Supersonic Duck Squadron! Fortnight", thumb:445}
+            });
+        }
+        else{
+            window.families.forEach(function(family,n) {
+                if (Array.isArray(family)){
+                    family.forEach(function(duo){
+                        if (duo != $scope.family || n+1 == $scope.id) return;
+                        var id = n+1;
+                        if (!CharUtils.isFarmable(id) || Utils.searchBaseForms(id)) return;
+                        var name = units[id - 1].name;
+                        if (name.length  > 25) name = name.slice(0,22) + '...';
+                        CharUtils.searchDropLocations(id).forEach(function(location) {
+                            $scope.families.push({
+                                uid: n + 1,
+                                name: name,
+                                location: location
+                            });
+                        });
                     });
                 }
-            }
-            if (family == "Demalo Black"){
-                if (!$scope.families.filter(function(e) { return e.uid == 985; }).length>0){
+                if (family != $scope.family || n+1 == $scope.id) return;
+                var id = n +1;
+                if (!CharUtils.isFarmable(id) || Utils.searchBaseForms(id)) return;
+                var name = units[id - 1].name;
+                if (name.length  > 25) name = name.slice(0,22) + '...';
+                CharUtils.searchDropLocations(id).forEach(function(location) {
                     $scope.families.push({
-                        uid: 985,
-                        name: units[985].name,
-                        location:  {data: ["Ultimate"], name: "Clash!? Impostor Straw Hat Pirates", thumb:989}
+                        uid: n + 1,
+                        name: name,
+                        location: location
                     });
+                });
+
+                //Super Hack Job to show Karoo as a socket for Vivi
+                if (family == "Nefertari Vivi"){
+                    if (!$scope.families.filter(function(e) { return e.uid == 445; }).length>0){
+                        $scope.families.push({
+                            uid: 445,
+                            name: units[444].name,
+                            location:  {data: ["All Difficulties"], name: "Supersonic Duck Squadron! Fortnight", thumb:445}
+                        });
+                    }
                 }
-            }
-        });
+                if (family == "Demalo Black"){
+                    if (!$scope.families.filter(function(e) { return e.uid == 985; }).length>0){
+                        $scope.families.push({
+                            uid: 985,
+                            name: units[985].name,
+                            location:  {data: ["Ultimate"], name: "Clash!? Impostor Straw Hat Pirates", thumb:989}
+                        });
+                    }
+                }
+            });
+        }
     }
 
     // hidden elements
@@ -214,8 +356,8 @@ app.controller('DetailsCtrl',function($scope, $rootScope, $state, $stateParams, 
         $('#compare').prop('disabled', false);
     };
     $scope.getPrevious = function() { return $stateParams.previous.concat($scope.id); };
-    $scope.isCaptainHybrid = ($scope.details && $scope.details.captain && ($scope.details.captain.global || $scope.details.captain.base || $scope.details.captain.combined));
-    $scope.isSailorHybrid = ($scope.details && $scope.details.sailor && ($scope.details.sailor.global || $scope.details.sailor.base || $scope.details.sailor.combined));
+    $scope.isCaptainHybrid = ($scope.details && $scope.details.captain && ($scope.details.captain.global || $scope.details.captain.base || $scope.details.captain.combined || $scope.details.captain.character1));
+    $scope.isSailorHybrid = ($scope.details && $scope.details.sailor && ($scope.details.sailor.global || $scope.details.sailor.base || $scope.details.sailor.combined || $scope.details.sailor.character1));
     $scope.isSpecialHybrid = ($scope.details && $scope.details.special && ($scope.details.special.global || $scope.details.special.character1));
     $scope.isCooldownHybrid = ($scope.cooldown && (Array.isArray($scope.cooldown[0])));
     $scope.isSpecialStaged = ($scope.details && $scope.details.special && $scope.details.special.constructor == Array);
@@ -223,6 +365,13 @@ app.controller('DetailsCtrl',function($scope, $rootScope, $state, $stateParams, 
     $scope.isPotentialStaged = ($scope.details && $scope.details.potential && $scope.details.potential.constructor == Array);
     $scope.isSupportStaged = ($scope.details && $scope.details.support && $scope.details.support.constructor == Array);
     $scope.isSwapHybrid = ($scope.details && $scope.details.swap && $scope.details.swap.global);
+    $scope.isfestAbilityHybrid = ($scope.details && $scope.details.festAbility && ($scope.details.festAbility.character1));
+    $scope.isfestSpecialHybrid = ($scope.details && $scope.details.festSpecial && ($scope.details.festSpecial.character1));
+    $scope.isfestAttackPatternHybrid = ($scope.details && $scope.details.festAttackPattern && ($scope.details.festAttackPattern.character1));
+    $scope.isfestAttackTargetHybrid = ($scope.details && $scope.details.festAttackTarget && ($scope.details.festAttackTarget.character1));
+    $scope.isfestResistanceHybrid = ($scope.details && $scope.details.festResistance && ($scope.details.festResistance.character1));
+    $scope.isVSConditionHybrid = ($scope.details && $scope.details.VSCondition && ($scope.details.VSCondition.character1));
+    $scope.isVSSpecialHybrid = ($scope.details && $scope.details.VSSpecial && ($scope.details.VSSpecial.character1));
 
     $scope.$watch('customLevel.level',function(level) {
         if (isNaN(level) || level < 1 || level > $scope.unit.maxLevel) {
@@ -255,10 +404,10 @@ app.controller('DetailsCtrl',function($scope, $rootScope, $state, $stateParams, 
             multiTooltipTemplate: '<%= Math.round(value * { HP: 4000, ATK: 1500, RCV: 550 }[label] / 100) %>'
         }
     };
-    
+
     if($scope.unit.maxLevel<6)
         $scope.showLine = false;
-    
+
     // radars for Line Graph
     if ($scope.unit.incomplete) return;
     if ($scope.unit.maxLevel>6){
@@ -333,7 +482,7 @@ app.controller('DetailsCtrl',function($scope, $rootScope, $state, $stateParams, 
             ]
         };
     }
-    
+
     $scope.$watch('compare',function(compare) {
         //Delete old Comparison data
         $scope.radar.data = $scope.radar.data.slice(0,1);
@@ -349,7 +498,7 @@ app.controller('DetailsCtrl',function($scope, $rootScope, $state, $stateParams, 
                 $scope.compare.maxATK / 1500 * 100,
                 Math.max(0, $scope.compare.maxRCV / 550 * 100)
             ]);
-            
+
             $scope.radarHP.series.push($scope.compare.name+' HP');
             $scope.radarHP.data.push(
                 [CharUtils.getStatOfUnit($scope.compare, 'hp', 1),

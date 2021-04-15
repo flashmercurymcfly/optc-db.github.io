@@ -134,6 +134,24 @@ window.matchers = [
         target: 'captain',
         matcher: /Boosts (their )?ATK\D*by 4.25x/i
     },
+    
+    {
+        name: '4.5x ATK captains',
+        target: 'captain',
+        matcher: /Boosts (their )?ATK\D*by 4.5x/i
+    },
+    
+    /*{
+        name: '4.75x ATK captains',
+        target: 'captain',
+        matcher: /Boosts (their )?ATK\D*by 4.75x/i
+    },*/
+    
+    {
+        name: '5x ATK captains',
+        target: 'captain',
+        matcher: /Boosts (their )?ATK\D*by 5x/i
+    },
 
     {
         name: 'HP-based ATK captains',
@@ -194,6 +212,30 @@ window.matchers = [
         name: 'Damage reducers',
         target: 'captain',
         matcher: /Reduces (any )?damage received/i
+    },
+
+    {
+        name: 'Despair reducers',
+        target: 'captain',
+        matcher: /(reduces|removes).+despair.+duration/i
+    },
+    
+    {
+        name: 'Silence/Special Bind reducers',
+        target: 'captain',
+        matcher: /(reduces|removes).+silence.+duration/i
+    },
+    
+    {
+        name: 'Paralysis reducers',
+        target: 'captain',
+        matcher: /(reduces|removes).+paralysis.+duration/i 
+    },
+
+    {
+        name: 'Special Rewind Restorers',
+        target: 'captain',
+        matcher: /restores.+special cooldowns?.+rewinded/i
     },
 
     {
@@ -323,6 +365,12 @@ window.matchers = [
         target: 'special',
         matcher: /boosts( own ATK| ATK of)/i
     },
+
+    {
+        name: 'Base ATK boosters',
+        target: 'special',
+        matcher: /boosts( own base ATK| base ATK of)/i
+    },
     
     {
         name: 'Combo Boost Specials',
@@ -400,6 +448,12 @@ window.matchers = [
         name: 'Chain Lockers',
         target: 'special',
         matcher: /Locks the chain multiplier/i 
+    },
+    
+    {
+        name: 'Boundary Chain Limiters',
+        target: 'special',
+        matcher: /Sets chain boundaries/i
     },
 
     {
@@ -666,7 +720,7 @@ window.matchers = [
     {
         name: 'Defense and Barrier Buff Ignoring damage dealer',
         target: 'special',
-        matcher: /(Deals|Cuts).+ignore damage negating abilities and barriers/i
+        matcher: /(Deals|Cuts).+ignore damage negating abilities/i
     },
     
     {
@@ -718,9 +772,33 @@ window.matchers = [
     },
 
     {
-        name: 'Multiple-Turn Buff/Debuff Removing specials',
+        name: 'Multiple-Turn Buff/Debuff Reducing specials',
         target: 'special',
         matcher: /by \d{1,} turns/i
+    },
+
+    {
+        name: '2-3 Turn Buff/Debuff Reducing specials',
+        target: 'special',
+        matcher: /by (2|3){1,} turns/i
+    },
+
+    {
+        name: '4-5 Turn Buff/Debuff Reducing specials',
+        target: 'special',
+        matcher: /by (4|5){1,} turns/i
+    },
+
+    {
+        name: '7+ Turn Buff/Debuff Reducing specials',
+        target: 'special',
+        matcher: /by (7|8|9|10|11|12|13|14|15|16|17|18|19|20){1,} turns/i
+    },
+
+    {
+        name: 'Buff/Debuff Removing specials',
+        target: 'special',
+        matcher: /duration completely/i
     },
 
     {
@@ -799,6 +877,12 @@ window.matchers = [
         name: 'Blindness reducers',
         target: 'special',
         matcher: /(reduces|removes).+blindness.+duration/i
+    },
+
+    {
+        name: 'Stun reducers',
+        target: 'special',
+        matcher: /(reduces|removes).+stun.+duration/i
     },
 
     {
@@ -939,6 +1023,12 @@ window.matchers = [
         name: 'ATK boosters',
         target: 'swap',
         matcher: /Boosts.+ATK/i
+    },
+
+    {
+        name: 'Base ATK boosters',
+        target: 'swap',
+        matcher: /boosts( own base ATK| base ATK of)/i
     },
 
 
@@ -1084,9 +1174,15 @@ window.matchers = [
     },
     
     {
-        name: 'Paralysis reducers',
+        name: 'Own paralysis reducers',
         target: 'sailor',
-        matcher: /(reduces|removes|resists).+Paralysis/i 
+        matcher: /(reduces|removes|resists).+Paralysis.+on this/i
+    },
+
+    {
+        name: 'Crew paralysis reducers',
+        target: 'sailor',
+        matcher: /(reduces|removes|resists).+Paralysis(?!.*on this)/i
     },
 
     {
@@ -1096,15 +1192,21 @@ window.matchers = [
     },
     
     {
-        name: 'Silence/Special Bind reducers',
+        name: 'Own Silence/Special Bind reducers',
         target: 'sailor',
-        matcher: /(reduces|removes|resists).+silence/i
+        matcher: /(reduces|removes|resists).+silence.+on this/i
+    },
+
+    {
+        name: 'Crew Silence/Special Bind reducers',
+        target: 'sailor',
+        matcher: /(reduces|removes|resists).+silence(?!.*on this)/i
     },
     
     {
         name: 'Special Rewind Restorers',
         target: 'sailor',
-        matcher: /Restores (his|her) own special/i
+        matcher: /Restores own special/i
     },
     
     {
@@ -1206,6 +1308,24 @@ window.matchers = [
     },
     
     {
+        name: 'Captain Upgrade Limit Break',
+        target: 'limit',
+        matcher: /Captain Ability/i
+    },
+    
+    {
+        name: '3rd Potential Ability',
+        target: 'limit',
+        matcher: /Acquire Potential 3/i
+    },
+    
+    {
+        name: 'No 3rd Potential Ability',
+        target: 'limit',
+        matcher: /^(.(?!Acquire Potential 3))*$/i
+    },
+    
+    {
         name: 'Enrage Potential Ability',
         target: 'limit',
         matcher: /Enrage/i
@@ -1251,6 +1371,12 @@ window.matchers = [
         name: 'Pinch Healing Potential Ability',
         target: 'limit',
         matcher: /Pinch Healing/i
+    },
+    
+    {
+        name: 'Nutrition Potential Ability',
+        target: 'limit',
+        matcher: /Nutrition/i
     },
     
     {
@@ -1324,7 +1450,7 @@ window.matchers = [
     {
         name: 'Debuff Activated Support',
         target: 'support',
-        matcher: /when you are inflicted with/i
+        matcher: /when an enemy inflicts/i
     },
     
     {
@@ -1463,6 +1589,12 @@ window.matchers = [
         name: 'Beneficial Orb support',
         target: 'support',
         matcher: /beneficial/i
+    },
+    
+    {
+        name: 'End of Turn Damage Dealer support',
+        target: 'support',
+        matcher: /(deals|cuts).+end of the turn/i
     },
     
     {
